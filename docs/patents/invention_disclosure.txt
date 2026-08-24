@@ -1,0 +1,347 @@
+Submit to
+
+Amrita Vishwa Vidyapeetham (AVVP)
+Case#:
+Patent & Technology
+Invention Disclosure Form
+
+Licensing Office, AVVP
+(patents@amrita.edu)
+
+All Inventors must sign the disclosure before it is submitted.
+1. TITLE OF INVENTION: Advanced Pothole Detection and Automated Filling using Raspberry Pi and Deep
+Learning Approaches
+2. PLEASE ATTACH A DESCRIPTION OF THE INVENTION (refer to instructions) The proposed invention is a smart
+and automated system for pothole detection and filling. It integrates Raspberry Pi, deep learning models, cloud computing,
+GPS-based geolocation, and servo motor-based actuation to address the issues of road damage efficiently. The system
+detects potholes in real-time, estimates their dimensions, and stores relevant data in the cloud. It then uses servo motors to
+automatically dispense appropriate repair material into the detected potholes, providing a complete end-to-end solution for
+road maintenance.
+i. General Purpose
+The general purpose of this invention is to develop an IoT-enabled, automated road maintenance system that can detect
+potholes, estimate the volume of damage, and initiate repair by dispensing filling material. The aim is to ensure accurate,
+timely, and cost-effective maintenance of roads while reducing the dependency on manual inspection and repair methods.
+ii. Technical Description
+Hardware Components:
+● Raspberry Pi 3 serves as the processing unit.
+● A camera module captures real-time road images.
+● A GPS module records the location of each detected pothole.
+● Servo motors are used to dispense the repair material at the pothole site.
+Software Components and Technologies:
+● YOLOv9 is employed for high-speed, accurate object detection and segmentation.
+● A pre-labeled dataset from Roboflow is used to train the model.
+● Monocular depth estimation is applied to calculate the depth of potholes.
+● Google Cloud Storage stores the captured images and metadata.
+● Streamlit is used for the dashboard interface.
+Workflow:
+1. The Raspberry Pi captures road images.
+2. YOLOv9 detects and classifies potholes in the images.
+3. GPS module tags the image with location data.
+4. Depth estimation algorithms calculate the pothole volume.
+5. Data, including images and metadata, is uploaded to the cloud.
+6. Based on the processed data, servo motors on municipal vehicles are triggered to dispense filling material
+automatically.
+iii. Advantages and Improvements Over Existing Methods
+● The system offers full automation, from detection to repair.
+● It ensures high accuracy in detection and volume estimation through the use of deep learning and image processing.
+● It is cost-effective due to the use of low-cost components like Raspberry Pi and servo motors.
+● The integration of GPS and cloud services allows for centralized monitoring and data-driven decision-making.
+● Real-time data collection and analysis enable timely and efficient road maintenance.
+iv. Potential Commercial Applications
+● Integration into smart city infrastructure for automated road monitoring and maintenance.
+● Deployment on municipal or contractor vehicles for real-time pothole detection and repair.
+● Use by government agencies and road transport departments for planning and executing maintenance operations.
+● Application in developing countries where affordable and scalable solutions are required for road infrastructure
+management.
+IDF Version 4.0
+
+Submit to
+
+Amrita Vishwa Vidyapeetham (AVVP)
+Case#:
+Patent & Technology
+Invention Disclosure Form
+
+Licensing Office, AVVP
+(patents@amrita.edu)
+3. INVENTOR(S): (please indicate primary contact with an *) Note: the order that inventors are listed on this form will
+reflect the order that inventors will be listed on potential patent applications.
+NAME
+DESIGNATION
+CAMPUS
+DEPARTMENT
+CONTACT INFO
+P Praneeth Reddy Student
+Bengaluru
+CSE
+8639564054
+P Sai Shruthi
+Student
+Bengaluru
+CSE
+9341332019
+P Tharneesh
+Student
+Bengaluru
+CSE
+9361191765
+Nivedh V Menon Student
+Bengaluru
+CSE
+9746646043
+Niranjan D K
+Assistant Professor
+Bengaluru
+CSE
+9901711517
+INSTITUTION
+
+GRANT
+
+PRINCIPAL INVESTIGATOR
+
+P.I. SIGNATURE
+
+Please note that accurate and complete grant and contract information is necessary. The Patent and Technology
+Licensing Office will use this information to determine any sponsor rights in the invention and to comply with all
+requirements under sponsored research agreements and applicable law(s).
+5. DATES OF CONCEPTION & PUBLIC DISCLOSURE (note: accurate information is essential as prior disclosure
+may affect the possibility of obtaining patent rights)
+Date
+Comments
+Include references to publications/conferences/meetings
+(attach additional sheet if necessary)
+
+A. Date of conception of invention.
+Nil
+Nil
+Has this date been documented? If
+so, where?
+B. First publication containing
+Nil
+Nil
+sufficient description to enable a
+person skilled in this field to
+understand and make use of the
+invention. (include these and date
+submitted)
+C. First oral public disclosure of
+Nil
+Nil
+invention sufficient to enable a
+person skilled in the field to
+understand and to make or use the
+invention.
+D. If unpublished and undisclosed,
+May
+IEEE Internet of Things Journal
+indicate planned publication or
+2026
+public oral disclosure date and any
+submissions made for potential
+publication.
+6. Has the invention been reduced to practice (prototypes/models made & tested)? Yes_ ✔ __ No ___
+If yes, please give date of first reduction to practice: 13/May/2025
+7. Please attach list of any parties (commercial/govt./etc.) that may be interested in this invention and contact
+names if available. (provide as much detail as possible)
+a. The Ministry of Road Transport and Highways (MoRTH) – Government of INDIA.
+b. Karnataka State Road Safety Authority – Government of Karnataka
+IDF Version 4.0
+
+Submit to
+
+Amrita Vishwa Vidyapeetham (AVVP)
+Case#:
+Patent & Technology
+Invention Disclosure Form
+
+Licensing Office, AVVP
+(patents@amrita.edu)
+8. I confirm that I have executed AVVP's Employee Confidentiality and Inventions Assignment Agreement, Contractor
+Agreement, Student Volunteer Agreement, Volunteer Agreement, Professional Consultancy Service Agreement, or
+Collaborator Agreement, as applicable to my participation as an employee, independent contractor, student volunteer,
+other volunteer, or Collaborator, with respect to the disclosed invention. I agree that the terms of such applicable
+agreement are hereby incorporated into this Invention Disclosure Form as if fully set forth herein with respect to me. I
+further agree that all rights and royalties related to the invention will be distributed in accordance with AVVP's Patent
+Policy. AVVP's Patent Policy is available upon request by contacting patents@amrita.edu or visiting amrita.edu/patents.
+Please note that the Patent Policy may be updated from time to time at AVVP's sole discretion
+
+Inventor’s Signature
+
+Date 14/05/2025
+
+Inventor’s Signature
+
+Date 14/05/2025
+
+Full Legal Name: P Praneeth Reddy
+
+Full Legal Name: Nivedh V Menon
+
+Home Address: 139, doorvaninagar, Bangalore 560016
+
+Home Address:183/3 saketham cholavayal, kalpetta, wayanad
+kerala
+City: Kalpetta
+State: Kerala
+Aadhaar#:734556275312
+Pin:673121
+Country of Citizenship:India
+DOB:18/01/2004
+Country of Residence: India
+Gender:Male
+Email: nivedhmenon739@gmail.com
+
+City: Bengaluru
+State: Karnataka Aadhaar#: 808785764773
+Pin: 560016
+Country of Citizenship: India
+DOB: 07/06/2003
+Country of Residence: India
+Gender: Male
+Email: connectwithpraneeth@gmail.com
+Inventor’s Signature
+
+Date 14/05/2025
+Inventor’s Signature
+
+Date: 14/05/2025
+
+Full Legal Name: P Sai Shruthi
+
+Full Legal Name: Niranjan D K
+
+Home Address: 38, 13th cross, West Park Road Malleswaram
+
+Home Address: No 578, Sri Virupaksha Nilaya, 15th Main,
+
+4th Block, Nandini Layout.
+City: Bengaluru State: Karnataka
+Aadhaar#: 303444589241
+Pin: 560003
+Country of Citizenship: India
+DOB: 17/06/2003
+Country of Residence: India
+Gender: Female
+Email: sai9shruthi@gmail.com
+
+City: Bangalore
+State:
+Pin: 560096
+Karnataka
+Country of Citizenship: INDAIN
+Country of Residence: INDIAN
+Email: dk_niranjan@blr.amrita.edu
+Inventor’s Signature
+
+Inventor’s Signature
+
+Aadhaar#:
+625997516521
+DOB: 07/Aug/1996
+Gender: Male
+
+Date
+
+Date 14/05/2025
+
+Full Legal Name: P Tharneesh
+
+Full Legal Name:
+
+Home Address: 29, Valaiyakaran Valasu, Vadugapatti Post,
+Mulanur
+City: Tiruppur
+State: Tamil
+Aadhaar#: 220711673390
+Pin: 638106
+Nadu
+Country of Citizenship: India
+DOB: 17/02/2004
+Country of Residence: India
+Gender: Male
+Email: tharneeshperiasamy@gmail.com
+
+Home Address:
+City:
+State:
+Pin:
+Country of Citizenship:
+Country of Residence:
+Email:
+
+Aadhaar#:
+DOB:
+Gender:
+
+IDF Version 4.0
+
+Submit to
+
+Amrita Vishwa Vidyapeetham (AVVP)
+Case#:
+Patent & Technology
+Invention Disclosure Form
+
+Licensing Office, AVVP
+(patents@amrita.edu)
+9. HOD review of application:
+Signature of HOD_______________________________________________
+
+Date__________________
+
+Name ___________________________________________________________
+
+AVVP Invention Disclosure Form Instructions
+I.
+
+The Patent and Technology Licensing Office (PTLO) reviews all Invention Disclosure forms as they are
+submitted. Where appropriate, the PTLO works to license AVVP inventions to industry for further
+development and commercialization. Any royalties received from licensing of the technology are shared
+with the inventor(s) according to AVVP Patent Policy.
+The purpose of this form is to notify the PTLO of your potential invention and any relevant sponsorship and
+publication history. The form also serves to establish a legal record of the date of conception of the
+invention. This form should be submitted to the Patent and Technology Licensing Office when something
+new and useful has been conceived or developed, or when unusual, unexpected or non-obvious research
+results have been achieved and can be used.
+
+II.
+
+The following instructions apply to the corresponding numbered section on the form:
+1. Provide a brief description of the Invention
+2. Please attach information that describes the following:
+i. General purpose
+ii. Technical description
+iii. Advantages and improvements over existing methods, devices or materials
+iv. Potential commercial application(s)
+3. Include full legal names of all inventors (no initials). Inventors are those who have conceived or
+contributed an essential element of the invention, either independently or jointly with others, during
+the evolution of the technology concept or reduction to practice.
+4. Please list all grants or external funds/sponsors contributing to the research. All disclosures must include
+the signatures of any principal investigator(s).
+5. Invention ownership is closely tied with dates of conception and filing. In most countries, patents must
+be filed prior to any public disclosure. Some countries allow a one year grace period from date of
+publication or first oral disclosure. Please provide information as accurately as possible.
+6. Reduction to practice, according to patent law, involves actual and complete use of the invention for its
+intended purpose. Such reduction to practice generally involves modeling of the invention and testing
+the model to determine whether it performs as intended, but this is not always necessary if the
+invention can be fully described.
+7. Please indicate any industry or other representatives who may have contacted you or expressed an
+interest in the technology. This will assist the PTLO in licensing efforts.
+IDF Version 4.0
+
+Submit to
+
+Amrita Vishwa Vidyapeetham (AVVP)
+Case#:
+Patent & Technology
+Invention Disclosure Form
+
+Licensing Office, AVVP
+(patents@amrita.edu)
+8. Obtain signatures of all inventors and complete the information as indicated.
+9. Please request your HOD to review and sign-off on the patent application.
+
+IDF Version 4.0
+
+

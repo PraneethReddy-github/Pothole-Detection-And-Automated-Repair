@@ -1,0 +1,2764 @@
+Advanced Pothole Detection and automated filling using
+Raspberry Pi and Deep Learning Approaches
+A PROJECT REPORT
+
+Submitted by
+​
+
+​
+
+BL.EN.U4AIE21139​
+
+​
+
+Nivedh V Menon​
+
+​
+
+​
+
+BL.EN.U4AIE21142​
+
+​
+
+P Praneeth Reddy
+
+​​
+
+​
+
+BL.EN.U4AIE21143​
+
+​
+
+P Sai Shruthi
+
+​
+
+​
+
+BL.EN.U4AIE21144​
+
+​
+
+P Tharneesh
+
+in partial fulfillment for the award of the degree of
+
+BACHELOR OF TECHNOLOGY
+IN
+COMPUTER SCIENCE AND ENGINEERING
+
+AMRITA SCHOOL OF COMPUTING, BENGALURU
+
+AMRITA VISHWA VIDYAPEETHAM
+BENGALURU 560 035
+
+May 2025
+
+AMRITA VISHWA VIDYAPEETHAM
+AMRITA SCHOOL OF COMPUTING, BENGALURU, 560035
+BONAFIDE CERTIFICATE
+This is to certify that the project report entitled “Advanced Pothole Detection and
+automated filling using Raspberry Pi and Deep Learning Approaches” submitted
+by
+
+BL.EN.U4CSE21139
+
+​
+
+Nivedh V Menon
+
+BL.EN.U4CSE21142
+
+​
+
+P Praneet Reddy
+
+BL.EN.U4CSE21143
+
+​
+
+P Sai Shruthi
+
+BL.EN.U4CSE21144
+
+​
+
+P Tharneesh
+
+in partial fulfillment of the requirements as part of Bachelor of Technology in
+“COMPUTER SCIENCE AND ENGINEERING” is a bonafide record of the work
+carried out under my guidance and supervision at Amrita School of Computing,
+Bengaluru.
+​
+Niranjan D K ​​
+
+​
+​
+
+​
+
+​
+
+Dr. Gopalakrishnan E. A
+
+Assistant Professor ​ ​
+
+​
+
+​
+
+Chair
+
+Dept. of CSE, School of Computing
+
+​ Dept. of CSE, School of Computing
+
+This project report was evaluated by us on ………
+​
+Internal Examiner ​
+
+​
+
+​
+
+External Examiner
+
+​
+
+ACKNOWLEDGEMENTS
+The satisfaction that accompanies successful completion of any task would be
+incomplete without mention of people who made it possible, and whose constant
+encouragement and guidance have been source of inspiration throughout the course of
+this project work.
+We offer our sincere pranams at the lotus feet of “AMMA”, MATA
+AMRITANANDAMAYI DEVI who showered her blessing upon us throughout the
+course of this project work.
+We owe our gratitude to Prof. Manoj P., Director, Amrita Vishwa
+Vidyapeetham Bengaluru Campus. We would like to place our heartfelt gratitude to
+Dr. Gopalakrishnan E.A., Principal, Amrita School of Computing and Amrita
+School of Artificial Intelligence, Bengaluru for his valuable support and inspiration.
+It is a great pleasure to express our gratitude and indebtedness to our project
+guide Niranjan D. K, Assistant Professor, Department of Computer Science and
+Engineering, Amrita School of Computing, Bengaluru for his valuable guidance,
+encouragement, moral support, and affection throughout the project work.
+We would like to thank express our gratitude to project panel members for their
+suggestions, encouragement, and moral support during the process of project work
+and all faculty members for their academic support. Finally, we are forever grateful to
+our parents, who have loved, supported and encouraged us in all our endeavours.
+
+I
+
+ABSTRACT
+Potholes are hazardous to the users of the road, lead to damage on vehicles,
+and are expensive to repair. The project suggests a pothole detection and
+instantaneous repair system automated with a Raspberry Pi 3 and a Pi Camera, to
+improve road maintenance efficiency while avoiding unnecessary material use. When
+taking a picture of a pothole, the photo and its metadata (e.g., GPS location,
+timestamp, and size) are recorded on a Google Cloud server for documentation and
+analysis. Pothole detection is done in real time with deep learning-based object
+detection methods. Local computer vision methods are used to estimate depth and
+volume, enabling the system to compute the quantity of fill material required. A
+servo-motor-powered filling mechanism, mounted at the front, dispenses the needed
+material automatically into the potholes detected. Automating both detection and
+filling, the system minimizes material utilization, manual efforts, and helps achieve
+effective, data-based road repairs at negligible expense.
+
+II
+
+TABLE OF CONTENTS
+Page No.
+ACKNOWLEDGEMENTS​
+
+i
+
+ABSTRACT​
+
+ii
+
+LIST OF FIGURES​
+
+​
+
+v
+
+CHAPTER 1- INTRODUCTION​
+
+1
+
+CHAPTER 2 – LITERATURE SURVEY​
+
+4
+
+CHAPTER 3 – SYSTEM SPECIFICATIONS​
+
+16
+
+3.1​
+
+SOFTWARE REQUIREMENTS​
+
+16
+
+3.2​
+
+HARDWARE REQUIREMENTS​
+
+18
+
+CHAPTER 4 – SYSTEM DESIGN​
+
+19
+
+4.1​
+
+Objective​
+
+19
+
+4.2 ​
+
+System Architecture​
+
+19
+
+CHAPTER 5 – SYSTEM IMPLEMENTATION​
+5.1
+
+Data Collection​
+
+5.2
+
+​
+
+22
+​
+
+​
+
+​
+
+22
+
+Comparison of YOLO model versions​
+
+​
+
+​
+
+​
+
+22
+
+5.3
+
+Object Detection and Segmentation​
+
+​
+
+​
+
+​
+
+25
+
+5.4
+
+GPS-Based Geolocation​
+
+​
+
+​
+
+​
+
+26
+
+5.5
+
+Depth Estimation for Volume Calculation​ ​
+
+​
+
+​
+
+26
+
+5.6
+
+Cloud Storage & Metadata Embedding​
+
+​
+
+​
+
+​
+
+27
+
+5.7
+
+Data Visualization & Dashboard​ ​
+
+​
+
+​
+
+​
+
+27
+
+5.8
+
+System Implementation​
+
+​
+
+​
+
+​
+
+28
+
+​
+
+​
+
+​
+
+​
+
+CHAPTER 6 – SYSTEM TESTING​
+
+30
+
+CHAPTER 7 – RESULTS AND ANALYSIS​
+
+33
+
+III
+
+7.9
+
+Prototype Implementation and Integration​
+
+CHAPTER 8 – CONCLUSION AND FUTURE SCOPE​
+8.1
+
+Future Scope​
+
+41
+43
+45
+
+REFERENCES​
+
+49
+
+IV
+
+LIST OF FIGURES
+Fig No.
+
+Page No.
+
+Fig. 4.1
+
+System Design
+
+20
+
+Fig. 5.1
+
+Comparison of YOLO models
+
+23
+
+Fig. 5.2
+
+Pothole Detection by different YOLO Models
+
+24
+
+Fig. 7.1
+
+Comparison of YOLO nano models
+
+34
+
+Fig. 7.2
+
+Image pothole detection output
+
+35
+
+Fig. 7.3
+
+Video pothole detection output
+
+35
+
+Fig. 7.4
+
+Real time pothole detection output
+
+35
+
+Fig. 7.5
+
+Pothole detection video format Pi3 interface
+
+36
+
+Fig. 7.6
+
+Example of segmentation of pothole from image
+
+36
+
+Fig. 7.7
+
+Saving of Metadata in JSON file
+
+37
+
+Fig. 7.8
+
+JSON file of a pothole image detection
+
+37
+
+Fig. 7.9
+
+Functioning of servo motor after volume detection
+on Pi3
+
+38
+
+Fig. 7.10
+
+Cloud storage of pothole info
+
+39
+
+Fig. 7.11
+
+Prototype of the automated pothole detection and
+repair system using Raspberry Pi3, Pi Camera, and
+Servo motor-controlled dispensing unit
+
+41
+
+V
+
+Introduction​ ​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+CHAPTER - 1
+INTRODUCTION
+Road construction is a part of infrastructure that is most fundamental to the
+growth of the economy and development of society. However, when the traffic cycle
+volumes rise and the environmental conditions change, roads are always under threat
+of being worn down by usage throughout day and night. Along with the road
+degradation, in this project, we have potholes, and frequent and potentially difficult
+problems arise most often within maintenance. These road deformities not only pose
+physical challenges or discomforts to the people who use the roads, but they represent
+the physical manifestations of road infrastructure deficits of the road network of the
+country. Further, they pose serious risks to other roadway users, although they are
+also caused by changing car maintenance expenses and fuel economy, that relates to
+more than a single front of the economy. Control techniques used in applying the
+budgeting techniques sometimes involve physical examination or expensive
+equipment, which can possibly be very tedious, involving, and cumbersome to
+perform as well as mistake- prone. Because most of these designs are not sufficiently
+large, they do not allow efficient maintenance for large areas. Therefore, a fast,
+efficient, and, above all, low-cost method of creating pothole detection and repair
+management is important in order to ensure the sustainment of roads and safety as
+well as the effectiveness of operations.
+​
+
+With the escalating technology advancement of IoT technology, this has now
+
+made it possible for different solutions to become innovative for several real- global
+issues, and road repair is among them. A project that utilizes IoT technology in order
+to develop an auto-pothole detection and repair management system is proposed. At
+the core of this system is the Raspberry Pi 3, an affordable yet efficient system of
+
+Page | 1
+Dept. of CSE, ASE, Bangalore
+
+Introduction​ ​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+sufficient computing allowance, modified by means of a Pi camera. The setup records
+images of potholes as they are identified on the road. The captured images and the
+JSON files are then transmitted to a cloud bucket on Google Cloud.
+​
+
+Out of all these methods, segmentation and clustering are employed to identify
+
+the dimension and depth of each pothole. Since the potholes causing each contact will
+be grouped together depending on location contact into a single cluster, the students
+will be able to predict the volume of each cluster. From the results obtained, the
+system also enables the students to approximate the volume with the respect to
+nearness to another object, in this case the other students. The amount of repair
+material needed for each of the sections of roads which lies on it is calculated, which
+goes in order to address, which in turn optimizes the use of resources. Using
+cloud-based machine learning algorithms.
+The pothole characteristics can be evaluated and assessed remotely, which
+makes these simplest road maintenance practices much smarter. Google Cloud
+services give scalable and secure cloud resources to process the image data that
+makes certain the solution can manage vast image data as well as the analysis should
+be real-time. Through image segmentation methods, the provided system correctly
+determines each pothole’s size and depth by approximating the surface area. This kind
+of measurement not only improves the rationality of material consumption but also
+promotes sustainable construction by minimizing waste and repair frequency of the
+construction.
+In addition, this project proves the further development possibility of IoT and
+cloud-based solutions in the management of the urban infrastructure. Through
+synchronized data capture and machine learning analysis, municipalities and
+maintenance teams can move up the maintenance model from the reactive mode to
+the proactive one. By incorporating the right material demand in repair, the groups
+
+Page | 2
+Dept. of CSE, ASE, Bangalore
+
+Introduction​ ​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+can understand how to fix the potholes based on their severity and this will save
+operational costs. The approach presented in this work to identify the pothole, and its
+repair could be adopted in other regions, which would enhance the maintenance of
+scalable and cost-effective urban infrastructure.
+As urbanization spreads wider, the demand for effective infrastructure
+maintenance intensifies. Conventional practices of road repair and monitoring tend to
+be manual, inefficient, and expensive. With an increase in traffic levels and worsening
+road conditions as a result of environmental factors, it is no longer feasible to stick
+exclusively to sporadic inspections and remedial repairs. The project presents a
+groundbreaking, automated technique for pothole detection and management using
+cutting-edge technologies including IoT, image processing, and machine learning.
+Through the utilisation of a combined methodology including cloud computing,
+real-time processing of images, and data analytics, the system not only offers the
+short-term solution of detecting potholes but also aids in long-term road management
+development, with optimal allocation of resources.
+In addition, integrating cloud-based solutions offers major benefits in
+scalability, security, and data access. Through the utilization of machine learning
+algorithms and cloud computing, great amounts of image data can quickly be
+processed and analyzed, presenting maintenance crews with actionable information
+for prioritizing the repairs. Through this degree of automation and intellect, human
+errors are minimized while response times improve, keeping roadways safer for
+motorists. Moreover, the system's capability to predict and compute material
+requirements based on pothole severity aids in waste reduction and minimizes
+environmental footprints, which align with international aspirations for sustainable
+infrastructure development. With cities expanding further and congestion on the rise,
+such intelligent, data-optimized solutions will become increasingly important in
+sustaining road infrastructure quality while ensuring lower costs and delays.
+
+Page | 3
+Dept. of CSE, ASE, Bangalore
+
+Literature Review​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+CHAPTER - 2
+LITERATURE REVIEW
+The aim is to improve accessibility [1] for the visually impaired by
+implementing a real-time pothole detection system. Through the integration of
+YOLOv5 into a mobile application, the system offers auditory and tactile feedback,
+assisting users in safely traversing uneven road surfaces. The model attains an image
+accuracy of 82.7% and a real- time detection rate of 30 FPS, providing fast and
+accurate pothole detection. The solution's portable and lightweight make it a
+convenient AI-based assistive tool for enhancing mobility and independence.
+A state-of-the-art [2] pothole detection model based on YOLOv8, which
+achieves 95.82% mAP, 0.95 precision and 0.97 recall is presented. The system
+performs well in both daytime and nighttime conditions, offering strong real-time
+detection with low latency. A Graphical User Interface (GUI) is added to facilitate
+user interaction through real-time monitoring and automatic reporting to maintenance
+teams. This method greatly enhances road safety by reducing accident risks, and it is
+an extremely efficient and scalable pothole detection solution.
+Development of an AIoT-based pothole detection [3] system that utilizes
+computer vision, AI-on-edge technology, and real-time map visualization has been
+done in this paper. With the help of YOLOv5m, the model records 91.8% mean
+Average Precision (mAP) and 82.95% accuracy, providing effective pothole detection.
+The system facilitates geotagging of potholes automatically, enabling transport
+authorities to plan repairs with priority and maximize maintenance operations.
+Through the use of edge computing, the solution operates independently of
+cloud-based processing, which renders it more scalable and economical for
+deployment in real-world applications.
+
+Page | 4
+Dept. of CSE, ASE, Bangalore
+
+Literature Review​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+Extensive survey of YOLO-based object detection in intelligent [4] traffic
+monitoring, driverless vehicles, and manufacturing purposes is performed. The study
+compares various YOLO variations (v2–v8, H, X, R, C) and classifies YOLOv8 as
+the most competent, reporting an mAP value of 0.99. The paper spotlights the
+involvement of YOLO in ADAS, self-driving automobiles, and intelligent traffic
+systems (ITS), outlining the superior performance with respect to its speed, precision,
+and learnability. With its increased acceptance, YOLO goes on to shape roadway
+safety and automated vehicles, proving its value to contemporary transport.
+Automated pothole-detection methods have been extensively reviewed and
+categorized into three primary approaches: vision-based, vibration-based, and 3D
+reconstruction-based techniques. [5] Vision- based methods, leveraging image
+processing and deep learning, are cost-effective and widely applicable but face
+challenges
+
+in
+
+depth measurement and sensitivity to
+
+lighting
+
+conditions.
+
+Vibration-based methods, utilizing acceleration sensors, are highly cost-effective and
+suitable for real-time processing, though they lack precise shape and volume
+information. In contrast, 3D reconstruction-based methods provide the most accurate
+geometric measurements but are hindered by high costs and reduced effectiveness
+when potholes are filled with water or debris. Recent advancements in these
+categories include modifications to YOLO models, edge detection techniques, and the
+application of convolutional neural networks (CNNs) to enhance detection accuracy.
+Future research is expected to focus on improving real-time processing capabilities
+and detection accuracy, particularly through the integration of deep learning and edge
+computing technologies.
+In parallel, computer vision techniques for road imaging and pothole detection
+have evolved from classical 2D image processing to advanced deep learning models,
+particularly CNNs, which have demonstrated significant improvements in accuracy
+and robustness. [6] Classical methods, while well-established, are limited by their
+susceptibility to environmental factors such as lighting and weather. In contrast, 3D
+
+Page | 5
+Dept. of CSE, ASE, Bangalore
+
+Literature Review​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+Point cloud modeling offers precise geometric information but requires substantial
+computational resources and careful parameter tuning. Deep learning-based
+approaches, especially those employing CNNs, have shown superior performance in
+tasks such as image classification and semantic segmentation. The availability of
+public datasets has been crucial for training and evaluating these models. Future
+research directions emphasize the development of unsupervised or self- supervised
+learning techniques to reduce dependency on large annotated datasets and enhance the
+adaptability of pothole detection systems across diverse environmental conditions.
+These advancements are critical for improving road safety and infrastructure
+management.
+Vision-based pothole detection methodologies have been systematically
+categorized into four primary approaches: traditional 2D image processing, 3D point
+cloud analysis, machine/deep learning techniques, and hybrid methods. [7]
+Traditional 2D methods, such as thresholding and segmentation, are cost-effective but
+often struggle with accuracy under varying environmental conditions, particularly
+poor lighting. In contrast, 3D point cloud techniques offer superior depth information
+and enhanced detection accuracy, though they are computationally intensive and
+require complex hardware setups. Machine learning, particularly deep learning
+models like convolutional neural networks (CNNs), has significantly advanced
+pothole detection through tasks such as image classification, object detection, and
+semantic segmentation, achieving high accuracy. However, these methods rely
+heavily on large, annotated datasets for training. Hybrid approaches, which integrate
+2D, 3D, and machine learning techniques, have demonstrated the highest accuracy
+and robustness by leveraging multi-modal data. Despite these advancements,
+challenges remain in real-time processing, adaptability to diverse road conditions, and
+the need for extensive datasets. Future research directions include the integration of
+multi-sensor data, development of real-time edge computing solutions, and
+exploration of advanced deep learning architectures like transformers to further
+enhance detection accuracy and efficiency. These advancements hold significant
+Page | 6
+Dept. of CSE, ASE, Bangalore
+
+Literature Review​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+potential for improving road safety and infrastructure management.
+A comprehensive comparison of CNN-based models for pothole detection
+under real-world adverse conditions has been conducted, focusing on the performance
+of region-based CNN (R-CNN) and You Only Look Once (YOLO) architectures. [8]
+Models such as Fast R- CNN, Faster R-CNN, Mask R-CNN, Cascade R-CNN, Sparse
+R-CNN, and YOLO versions 3 to 7 were evaluated across various weather and
+lighting conditions, including rain, sunset, evening, and night. The findings indicate
+that YOLO models, particularly YOLOv7, exhibit superior detection accuracy and
+inference speed under most conditions, making them highly suitable for real-time
+applications. However, R- CNN models, despite their higher computational demands,
+outperform YOLO in low-visibility scenarios, such as nighttime. The study
+underscores the challenges of pothole detection in adverse environmental conditions
+and highlights the need for robust models capable of handling such variability. While
+YOLO models are generally more efficient and accurate, R-CNN models demonstrate
+better performance in extreme low-light situations. Future research directions include
+leveraging data augmentation, attention mechanisms, and multi- sensor fusion to
+enhance detection accuracy in challenging conditions, providing valuable insights for
+selecting appropriate models based on specific environmental requirements.
+An Internet of Vehicles (IoV) real-time pothole detection system based on
+digital twins and edge intelligence is presented in this paper, to enhance road safety
+and traffic efficiency [9]. With the help of state- of-the-art computer vision methods
+such as YOLOv9t, the vehicles with the inbuilt units (OBUs), dash cams and
+dedicated short range communication (DSRC) can in fact detect potholes and then
+signal to other vehicles as well as infrastructure using V2V and V2I communication.
+Detected pothole data is offloaded to roadside units (RSUs) and incorporated into a
+digital twin (DT) for the full picture of the road’s condition. In order to achieve
+minimal latency (3 ms) and high detection accuracy (85% mAP), it employs
+cooperative perception and the distributed edge intelligence (DEI) of the system.
+
+Page | 7
+Dept. of CSE, ASE, Bangalore
+
+Literature Review​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+Using a nonlinear vehicle dynamics framework, these data are processed by the
+digital twin in real time for providing real time updates as well as performing life
+cycle analysis. Extensive simulations of YOLO variants demonstrate the effectiveness
+of using YOLOv12 nano for accurate and fast pothole detection so as to improve
+traffic flow and vehicle management in intelligent transportation systems (ITS).
+Smartphone-based Road pothole and speed bump detection from acceleration
+and GPS sensors with an Extract Data Features Filter (EDFF) technology were
+developed [10]. Preprocessing acceleration data with Euler angles is first used to
+redirect the data, followed by detrending via least squares to remove unwanted trends,
+and finally noise from raw sensor signals is removed by wavelet threshold denoising.
+The vehicle model parameters are identified using a genetic algorithm and then used
+for accurate calculation of the road excitation. EDFF method is vital for
+distinguishing potholes and speed bumps because it takes advantage of unique
+features in the acceleration signal properties being induced by different types of road
+irregularities. The system has been proved to be able to provide over 75 % accuracy
+of pothole detection and 100 % accuracy of speed bump detection in Harbin
+Experimental result, and has the potential to improve the road maintenance, safety
+and efficiency during road surveillance of problematic road areas.
+Due to the poor construction materials used in the roads, in India it is difficult
+to detect and avoid potholes [11]. Repairing potholes quickly is important in order to
+prevent accidents and vehicle damage. In this article, we present a novel pothole
+detection using YOLOv8 (POT- YOLO) that is able to detect potholes similar to
+cracks, oil stains, patches, pebbles etc. Contrast Stretching Adaptive Gaussian Star
+Filter (CAGF) is used to process pre already converted videos from potholes into
+images to reduce distortions. First, the pole is preceded by checking using YOLOv8,
+then you have a Sobel edge detector applied. POT-YOLO was tested on potholes of
+different sizes and shapes under various light and noise conditions in a dataset. Faster
+R-CNN, SSD, and Mask R-CNN are surpassed by the method as they achieved
+
+Page | 8
+Dept. of CSE, ASE, Bangalore
+
+Literature Review​
+
+​
+
+99.10% accuracy,
+
+97.6%
+
+​
+
+​
+
+precision,
+
+​
+
+93.52%
+
+​
+
+​
+
+recall
+
+​
+
+May, 2025
+
+and 90.2% F1-score.
+
+Compared with other methods, the POT-YOLOv8 approach has a better potholes
+detection capability with fewer false positives and faster detection time, and this
+method has the potential for real-time road monitoring and repair management.
+An innovative solution for pothole detection and impact estimation from
+vehicle built in technologies in real time [12]. There are a number of factors such as
+traffic, weather, and aging that can cause potholes which can result in accidents,
+property damage, and costly repairs. Sensor vehicles are much more expensive, and
+traditional pothole surveys are very expensive, very time-consuming and error prone.
+To overcome these problems, the authors present a Deep Learning model based on the
+You Only Look Once (YOLO) algorithm to identify potholes and find out their size.
+The model performed outstandingly with 93.0% of precision, 91.6% of recall, 87.0%
+of F1-score, and 96.3% of mean average precision (mAP). Training and testing
+datasets were created using images from some sources such as Smartphone-based
+Road Damage Detection dataset and videos from actual human driving scenarios.
+Training dataset was enhanced using the data augmentation technique like flips,
+rotation and random zooming. The pothole detection model was trained by YOLOv5
+and evaluated on the basis of precision, recall, F1 score, and mAP making its
+performance superior than existing studies. Lane widths were measured, pixel
+measurements were converted to real world dimensions with the aid of the Euclidean
+formula, and the pothole size estimation was achieved. An economical, efficient,
+scalable solution for pothole detection and maintenance with vehicle onboard
+diagnostics and data sharing among authorities and vehicle owners is provided by this
+approach.
+Developed a sophisticated pothole detection framework that combines stereo
+vision and deep learning. [13] In order to distinguish potholes, speed bumps, and
+other road abnormalities more precisely, they used a ZED camera, which records
+color and depth information. Their approach uses convolutional neural networks
+
+Page | 9
+Dept. of CSE, ASE, Bangalore
+
+Literature Review​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+(CNNs) to scan the stereo images and extract rich spatial characteristics that improve
+detection effectiveness in difficult-to-reach places like wet roads or dim lighting. The
+model outperformed conventional 2D-based detection methods after being trained on
+a variety of datasets to guarantee robustness against different weather and traffic
+circumstances. In contrast to traditional models that just use flat photos, such YOLO
+or Faster R-CNN, the use of depth information gave crucial context and greatly
+decreased false positives.Their experimental results demonstrated that stereo-based
+deep learning models could be a major step toward real-world pothole detection
+systems integrated into smart city infrastructure and autonomous vehicles.
+Pre-trained convolutional neural networks (CNNs), such as ResNet50,
+ResNet18, and MobileNet, are used for pothole classification. [14] In addition to
+identifying potholes, their study aimed to categorize them based on their severity and
+surface area, which is an important consideration for organizing road maintenance
+tasks. They significantly decreased the amount of time and computing power required
+for training by using transfer learning to optimize the models to function effectively
+even with comparatively small datasets. For real-time applications, MobileNet
+outperformed the other models in terms of accuracy and efficiency. Their findings
+demonstrated classification accuracies of up to 98%, surpassing a number of
+conventional machine learning techniques. In contrast to treating all potholes equally,
+this investigation highlighted the significance of classifying road problems so that
+authorities can prioritize repairs based on the extent of damage.Their research aligns
+with the broader movement towards intelligent, cost-effective, and scalable road
+monitoring systems powered by deep learning.
+An automated pothole detection and assessment system based on IoT has been
+built from real-time vibration readings of unmanned ground vehicles (UGVs) with
+accelerometers [15]. The system uses a dynamic error thresholding (DET) algorithm
+to identify potholes by squaring vertical acceleration readings, smoothing these using
+an exponentially weighted moving average (EWMA), and calculating an optimum
+
+Page | 10
+Dept. of CSE, ASE, Bangalore
+
+Literature Review​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+threshold for anomaly detection. This technique successfully discriminates between
+typical and anomalous data, offering noise and false positive robustness. It also sizes
+potholes in terms of vehicle speed and anomaly length. It has been shown through
+field trials that the system is accurate in detecting and measuring potholes of different
+sizes under diverse road conditions, with cross-validation against wavelet-based
+changepoint detection algorithms.
+Real-time crack detection in pavements is critical for ensuring road safety,
+saving maintenance costs, and enhancing infrastructure quality [16]. Current research
+points to the possibility of Internet of Vehicles (IoV) in conjunction with Distributed
+Edge Computing (DEC) in identifying cracks since cars mounted with sensors are
+able to provide real-time data. Application of these technologies enables faster and
+more precise identification of defects in the pavement. Through edge computing,
+closer to the information source, DEC minimizes latency and bandwidth
+consumption, delivering quicker insights and allowing for timely road maintenance
+decisions. Several approaches, such as deep learning and image processing, have been
+investigated for the automatic identification of pavement cracks by researchers,
+showcasing the capabilities of these advanced systems in real-time monitoring on a
+large scale.
+Researchers introduced a novel method for detecting irregular potholes on road
+surfaces by integrating depth camera images with point cloud data [17]. This
+approach leverages the YOLOv8 object detection algorithm in conjunction with
+three-dimensional point cloud information to enhance detection accuracy. The fusion
+of these data sources allows for a more comprehensive understanding of road surface
+conditions, enabling the system to identify potholes with greater precision. The study
+emphasizes the importance of reducing false positives in pothole detection to
+optimize maintenance efforts and improve road safety. By combining advanced
+imaging techniques with state-of-the-art deep learning models, this research
+contributes to the development of more reliable and efficient road monitoring
+
+Page | 11
+Dept. of CSE, ASE, Bangalore
+
+Literature Review​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+systems, which are crucial for intelligent transportation infrastructure.
+To enhance pothole recognition in low-resolution photos, a novel method that
+combines the YOLOv7 object detection framework with Enhanced Super-Resolution
+Generative Adversarial Networks (ESRGAN) is suggested [18]. The YOLOv7 model
+can identify potholes more precisely because of the integration of ESRGAN, which
+improves the quality of input photos.
+
+This technique tackles the problem of
+
+identifying abnormalities on roads in photos taken in less-than-ideal circumstances,
+like dim illumination or subpar sensors. The study showed that by attaining greater
+precision and recall rates, the combined model performs noticeably better than
+conventional detection techniques.
+
+This development is especially helpful for
+
+real-time applications like road maintenance systems and autonomous cars, where, in
+spite of technology constraints, high detection accuracy is essential.The research
+highlights the potential of integrating super-resolution techniques with deep learning
+models to enhance the reliability of infrastructure monitoring systems.
+A fresh model for programmed pothole identification that makes use of transfer
+learning [19]. To differentiate between photos with and without potholes, the system
+uses a proprietary Siamese network with triplet loss after extracting features from a
+pre-trained VGG16 model.
+
+The shortcomings of conventional object detection
+
+techniques, which frequently have trouble with the many shapes and textures of
+potholes, are addressed by this architecture. With an astounding accuracy of 96.12%,
+RoadScan proved its usefulness in practical situations. Because of its lightweight
+architecture, which guarantees computational efficiency, the model may be deployed
+on devices with constrained computing power. This study emphasizes how crucial
+specialized network architectures and transfer learning are to creating reliable and
+expandable pothole detection systems.
+Energy-efficient resource provisioning in cloud computing has emerged as an
+essential area of research with the increasing need for cost-efficient and sustainable
+data center operations [20]. Conventional scheduling algorithms like First Come First
+Page | 12
+Dept. of CSE, ASE, Bangalore
+
+Literature Review​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+Serve (FCFS) and Round Robin (RR) tend to be inefficient in terms of energy
+consumption, particularly under dynamic workloads. To counter this, researchers have
+used metaheuristic algorithms such as Genetic Algorithm (GA) and Particle Swarm
+Optimization (PSO) more and more because they are flexible and have global search
+ability. Prior research showed GA can efficiently search a broad solution space with
+operations such as crossover and mutation, whereas PSO is superior in quick
+convergence by modeling social behavior of agents. But these algorithms, if
+implemented alone, can be plagued by local optima or slow convergence. These
+shortcomings have been addressed by hybrid methods, which married GA's
+exploratory power with PSO's exploitative effectiveness. This paper extends this
+concept by formulating a new GA-PSO hybrid framework for resource allocation in
+cloud computing based on a tailored fitness function that considers energy usage,
+resource allocation, and SLA breaches. Simulated on CloudSim, the hybrid model
+outperformed single GA, PSO, and traditional methods substantially, demonstrating
+the strength of hybrid optimization methods in improving energy efficiency and
+service quality in cloud environments.
+The area of pothole detection automation has seen great progress with the use
+of computer vision and deep learning methods, as researchers look for efficient,
+real-time, and scalable methods to tackle the increasing problem of road surface
+irregularities [21]. Previous methods used LiDAR sensors and image processing
+through conventional means like morphological operations and color segmentation;
+however, these tended to have environmental constraints and were expensive in terms
+of hardware. Vision-based approaches employing 2D and 3D cameras, such as those
+suggested ), brought better detection via clustering and segmentation algorithms.
+Recently, deep learning-based models such as CNNs, YOLO, and SSD have come to
+the forefront with better accuracy and speed in object detection tasks. Research
+illustrated the effectiveness of YOLOv4 and YOLOv3, respectively, for real-time
+detection with encouraging results. The present paper continues this trend by using
+YOLOv5, which is an extensively optimized model with exportability to edge devices
+Page | 13
+Dept. of CSE, ASE, Bangalore
+
+Literature Review​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+using TensorFlow Lite so that it remains compatible with Android devices. While
+YOLOv4 and even YOLOv7 were comparable, YOLOv5 demonstrated similar or
+improved accuracy with reduced computational requirements and is therefore best
+suited for mobile deployment. In addition, the paper also embeds a feedback-enabled
+dashboard, path tracking, and authority alert system, hence filling loopholes in user
+interactivity and real-time communication identified in the earlier research. This
+combination solution is an enhancement step in designing accessible, cheap, and
+robust smart infrastructure solutions
+
+Page | 14
+Dept. of CSE, ASE, Bangalore
+
+Research Gap​ ​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+RESEARCH GAP
+Current pothole detection methods struggle with real-time efficiency, adverse
+conditions, and reliance on large datasets. Limited multi-sensor fusion and
+underexplored advanced architectures hinder accuracy. Distinguishing potholes from
+similar road anomalies, cost-effectiveness and lack of multi-input parameters are also
+some challenges faced. Finally, volumetric analysis of a pothole or multiple potholes
+in an image has not been tackled efficiently.
+This project involves addressing and improving these challenges and coming up with
+a state-of-art advanced pothole detection model.
+
+Page | 15
+Dept. of CSE, ASE, Bangalore
+
+System Specification​ ​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+CHAPTER – 3
+SYSTEM SPECIFICATIONS
+3.1​ Software requirements
+1.​ Operating System:
+a.​ Windows 10/11, macOS, or Linux (Ubuntu 20.04 or higher) to ensure
+compatibility with Python environments.
+
+2.​ Programming Language:
+a.​ Python 3.7 or higher is required for algorithm
+implementation and data analysis.
+
+3.​ Dependencies: The following Python libraries are required to run the
+task scheduling algorithms and analysis scripts:
+a.​ Pandas: For handling data
+b.​ NumPy: For numerical computations
+c.​ Matplotlib: For plotting algorithm performance
+d.​ Scikit-learn: For classification, regression, and clustering.
+e.​ TensorFlow:
+
+Deep
+
+learning
+
+and
+
+neural
+
+network
+
+framework.
+f.​ SciPy: Scientific computing for optimization, integration, and stats.
+g.​ Multiprocessing:
+
+Used
+
+for
+
+parallel
+
+execution
+
+in
+
+algorithms like PSO and BCO.
+
+4.​ Development Tools:
+Page | 16
+Dept. of CSE, ASE, Bangalore
+
+System Specification​ ​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+a.​ IDE: PyCharm, VS Code, Google collab or Jupyter Notebook
+for development and debugging.
+b.​ Version control: Git for managing code versions and
+collaboration (GitHub, GitLab)
+
+5.​ Data Storage:
+a.​ CSV or Excel files are used to store the input data for task scheduling.
+The system must support reading/writing data using the pandas
+library.
+
+6.​ Algorithm:
+
+a.​ YOLO: YOLO (You Only Look Once) is a real-time object detection
+algorithm that scans images in a single pass through a neural network.
+From YOLOv1 to the current YOLOv12, with each iteration
+enhancing accuracy, speed, and feature extraction methods.YOLO is
+still a popular algorithm in computer vision tasks like autonomous
+driving, surveillance, and medical imaging because it is well-balanced
+between speed and accuracy.
+
+b.​ MIDAS: MiDaS (Multiple Depth Estimation Accuracy with Single
+Network) is a deep learning architecture for monocular depth
+estimation, i.e., estimating depth from a single image. It is famous for
+its speed and accuracy in depth estimation from single-view images
+
+Page | 17
+Dept. of CSE, ASE, Bangalore
+
+System Specification​ ​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+3.2​Hardware Requirements:
+a.​ Raspberry Pi 3: Raspberry Pi 3 is a compact, low-cost, singleboard computer with a quad-core ARM Cortex-A53 processor, 1GB
+RAM, built-in Wi-Fi, and Bluetooth. It supports various operating
+systems like Raspberry Pi OS and Ubuntu, making it ideal for IoT,
+robotics, and educational projects. Its GPIO pins enable hardware
+interfacing, making it popular for DIY electronics and automation
+applications.
+
+b.​ GPS Module: A GPS (Global Positioning System) module is a
+device that receives satellite signals to determine precise location,
+speed, and time data. It is widely used in navigation, tracking systems,
+and IoT applications for real-time geolocation.
+
+c.​ Servo Motors: A servo motor is a rotary actuator that provides
+precise control of angular position, speed, and torque.
+
+Page | 18
+Dept. of CSE, ASE, Bangalore
+
+System Design​​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+CHAPTER - 4
+SYSTEM DESIGN
+4.1​Objective
+The objective of this project is to develop an automated pothole detection and
+filling system using Raspberry Pi, deep learning, and servo motors to enhance road
+maintenance efficiency. The system aims to:
+1.​ Accurately detect potholes using a YOLO v12 nano -based deep learning
+model.
+2.​ Capture GPS coordinates of detected potholes for precise location mapping.
+3.​ Store pothole data on the cloud for real-time monitoring and government
+access.
+4.​ Integrate​
+
+servo​
+
+motors​
+
+with​
+
+dispensing​
+
+mechanisms​
+
+for
+
+automated pothole filling.
+5.​ Enhance road safety and reduce manual maintenance efforts through
+automation.
+
+4.2​System Architecture:
+​
+
+The architecture (See Fig. 4.1) of the suggested pothole detection and repair
+
+system is implemented as a modular and streamlined pipeline that combines machine
+learning, embedded systems, and cloud technology. The procedure starts with the
+acquisition of a high-quality, annotated pothole image dataset from Roboflow. This
+dataset provides the basis for training multiple versions of the YOLO object detection
+model, namely versions 8 to 12. The different models are compared systematically to
+determine the best candidate based on performance, speed, and efficiency. The chosen
+model is next optimized and deployed onto the Raspberry Pi 3, which will act as the
+Page | 19
+Dept. of CSE, ASE, Bangalore
+
+System Design​​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+primary edge device tasked with performing real-time pothole detection in
+resource-restricted environments.
+
+Fig 4.1. System Design
+
+​
+
+At the core of the hardware integration is the Raspberry Pi 3, which serves as the
+
+system's central processing unit. It communicates with other components such as a
+GPS module and servo motors. The GPS module is critical for geotagging where
+pothole detections are located, inserting accurate latitude and longitude information
+into each detection's metadata. This geospatial data is essential for location-based
+analysis and repair scheduling. The servo motors are coupled to a material dispensing
+unit, which makes the system respond automatically after the detection of a pothole
+and an estimate of its volume. The use of these hardware components makes the
+system not only detect potholes but also respond to the detection in real time.
+​
+
+The system supports three categories of input modes: live video stream for
+
+real-time detection, recorded video for batch processing, and still images for manual
+input or validation. All these input modes go through inference using the rolled-out
+YOLO model, which delivers bounding boxes of potholes and triggers the next
+processing steps. Depth estimation algorithms, usually driven by models such as
+MIDAS, are utilized to assess the volume of potholes. These computations have a
+direct impact on the duration of the servo motor's activity, regulating the volume of
+Page | 20
+Dept. of CSE, ASE, Bangalore
+
+System Design​​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+repair material poured into every pothole. This smart correlation of volume with
+material consumption makes the system not just automated but also economical in its
+use of resources.
+​
+
+For remote accessibility and data persistence, the system is fully integrated with
+
+Google Cloud. When a connection to the internet is established, the system uploads
+all the pertinent data, including images, metadata, and detection logs, to cloud
+storage. In offline mode, data is securely stored locally and synchronized
+automatically when the connection is re-established. This prevents data loss and
+allows uninterrupted, continuous field operations. Integration with the cloud also
+facilitates centralization of data for analysis and reporting.
+​
+
+Lastly, the system finishes with the autonomous actuation of the servo motor for
+
+material filling. This step is immediately prompted by the output result of the depth
+and volume estimation step. The system therefore converts from a passive monitoring
+solution to an active repair tool, able to close the loop between detection and
+correction. The overall design not only prioritizes real-time performance and cost
+efficiency but also sets the stage for scalable deployment on road networks, enabling
+smarter and more sustainable urban infrastructure management.
+
+Page | 21
+Dept. of CSE, ASE, Bangalore
+
+System Implementation​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+CHAPTER – 5
+SYSTEM IMPLEMENTATION
+5.1 Data Collection
+The pothole detection system is carefully constructed on a pre-labeled dataset
+obtained from Roboflow, a reliable platform renowned for offering high-quality
+annotated datasets specifically designed for machine learning use. The dataset used
+includes a broad range of pothole images taken at various geographical locations,
+road conditions, and environmental settings. These pictures represent a broad range of
+real-world situations, such as differing lighting conditions like bright daylight, dusk,
+and nighttime, and weather conditions like rain, fog, and fair weather. Furthermore,
+the dataset represents a variety of road surfaces—ranging from asphalt and concrete
+to cobblestone and gravel—ensuring the model's versatility across different textures
+and backgrounds. This broad and heterogeneous data set substantially adds to the
+strength and generalizability of the model, allowing it to perform with high accuracy
+even when operating in new or difficult environments. Furthermore, by basing itself
+on well-curated and accurately annotated data, the system is well able to distinguish
+potholes from other surface features like cracks, patches, or rubbish, thus avoiding
+false positives and guaranteeing good performance in real-world conditions.
+
+5.2 Comparison of YOLO model versions
+The YOLO (You Only Look Once) family of object detection models have
+undergone huge changes from YOLOv8 to the recent YOLOv12 versions, each with
+enhancements in speed, accuracy, and efficiency for various deployment requirements
+(See Fig 5.1. and Fig 5.2. for the comparison and detection of different YOLO
+models).
+
+Page | 22
+Dept. of CSE, ASE, Bangalore
+
+System Implementation​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+YOLOv8, as created by Ultralytics, came with a purer codebase, improved
+modularity, and task-agnostic support for flexible tasks such as classification,
+detection, and segmentation in a common framework. It provided several sizes of
+models, including YOLOv8n (Nano), YOLOv8s (Small), YOLOv8m (Medium),
+YOLOv8l (Large), and YOLOv8x (Extra Large), enabling users to balance between
+accuracy and speed according to hardware strengths.
+
+Fig 5.1. Comparison of YOLO Models
+
+YOLOv9 enhanced YOLOv8 by adding the Efficient Layer Aggregation Network
+(ELAN) and Hybrid Task Cascade (HTC) modules, further improving feature
+extraction and multi-scale object detection. YOLOv9 models also adhere to the Nano,
+Page | 23
+Dept. of CSE, ASE, Bangalore
+
+System Implementation​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+Small, Medium, Large, and XLarge size system, retaining flexibility across
+Raspberry Pi to high-end GPUs.
+YOLOv10 and YOLOv11 further optimized the design of the backbone and neck,
+with a strong focus on light structures, making them highly applicable for real-time
+detection on edge devices. These versions prioritized model compression,
+quantization, and attention mechanisms to enhance efficiency without compromising
+much on accuracy.
+
+Fig 5.2. Pothole Detection by different YOLO Models
+
+Page | 24
+Dept. of CSE, ASE, Bangalore
+
+System Implementation​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+YOLOv11 made significant advances in structural re-parameterization to enhance
+detection performance in crowded scenes. YOLOv11 models perform best in
+challenging environments where occlusions or small object detection are significant.
+It also made dynamic convolution, which speeds up both accuracy and computational
+efficiency.
+YOLOv12, the new one, employs the most up-to-date methods such as RepViT
+backbones, Dynamic Head Networks, and structural re-parameterization to attain
+state-of-the-art speed and detection accuracy. Specifically, YOLOv12 Nano is
+well-suited for low-power devices such as Raspberry Pi 3, whereas YOLOv12 Small
+and YOLOv12 Medium models can be used with somewhat more powerful hardware.
+Large counterparts such as YOLOv12 Large and XLarge are most suitable for
+GPU-powered servers where detection precision is given maximum priority.
+In general, as we progress from YOLOv8 to YOLOv12, there is a definite trend
+towards increased efficiency, scalability, and flexibility, which makes YOLO models
+extremely well-suited for a broad spectrum of applications ranging from embedded
+systems to enterprise-level deployments.
+
+5.3 Object Detection & Segmentation
+For object detection and segmentation, the system employs a YOLOv12 nano
+model, which is exclusively trained on the Roboflow pothole dataset. YOLOv12 is a
+state-of-the-art object detection model known for its high accuracy and fast inference
+speed, making it suitable for real-time applications. The model supports detection in
+various formats, including static images, video streams, and real-time camera feeds,
+allowing for on-the-go pothole detection during vehicle movement. To ensure that no
+potholes are missed, the system stores all detected pothole images without applying
+duplicate filtering, preserving a complete dataset for further analysis and validation.
+This approach helps in tracking pothole occurrences over time, aiding authorities in
+
+Page | 25
+Dept. of CSE, ASE, Bangalore
+
+System Implementation​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+determining how quickly potholes reappear or deteriorate.
+
+5.4 GPS-Based Geolocation
+To accurately map pothole locations, the system integrates a GPS module
+connected to a Raspberry Pi, which captures latitude and longitude coordinates at the
+time of detection. These GPS coordinates are embedded into the image metadata,
+ensuring that each detected pothole is tagged with its precise location. This feature is
+essential for creating pothole distribution maps, which can be used by road
+maintenance
+
+teams
+
+to prioritize
+
+repair
+
+schedules. Additionally, integrating
+
+geolocation allows for historical tracking of potholes, enabling city officials to
+monitor whether previously repaired potholes reappear in the same locations. By
+automating geotagging, the system eliminates the need for manual reporting, reducing
+human error and increasing efficiency in road maintenance planning.
+
+5.5 Depth Estimation for Volume Calculation
+In addition to simple surface detection, the system has an advanced depth
+estimation feature to determine the actual severity of every pothole. The width and
+height are first obtained from the bounding box dimensions given by the YOLOv12
+nano model upon object detection. To estimate depth, the system makes use of the
+MIDAS (Monocular Depth Estimation) algorithm, which is a deep learning method
+advanced enough to be able to estimate depth from one image without stereo vision or
+LIDAR input. This algorithm allows for estimation of depth even on low-powered
+hardware such as Raspberry Pi while still keeping the system in real-time processing
+mode. Through the union of width, height, and depth, the system determines the
+approximate volume of every pothole via the straightforward yet efficient formula:
+Volume = Width × Height × Depth. This volumetric determination enables road
+maintenance crews to plan repairs not just according to the occurrence of potholes but
+also in relation to their relative size and potential hazard, resulting in better resource
+allocation. In addition, volume calculations aid in the computation of the amount of
+Page | 26
+Dept. of CSE, ASE, Bangalore
+
+System Implementation​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+repair material required, hence allowing for improved budgeting and logistical
+planning of roadwork.
+
+5.6 Cloud Storage & Metadata Embedding
+To enable effective and scalable data management, the system uploads all the
+pothole images and their associated metadata to Google Cloud Storage. Each image is
+accompanied by a JSON file with rich metadata, such as GPS coordinates,
+timestamps, bounding box measurements, and depth estimation values. Additionally,
+some metadata fields are also stored directly into the image files themselves so that
+critical information goes along with the data even when metadata files get separated
+subsequently. Keeping all data on a common cloud platform not only provides
+durability and redundancy but also facilitates smooth access by multiple stakeholders,
+such as road maintenance teams, city planners, and researchers. Google Cloud
+Storage usage facilitates seamless integration with visualization and analytics tools,
+enabling more profound insights into pothole distribution patterns, repair efficacy, and
+infrastructure condition over time. Automating data storage and integrating key
+metadata, the system minimizes manual administrative burdens and provides a
+future-proof data store for real-time and retrospective analysis.
+
+5.7 Data Visualization & Dashboard
+To fill the gap between raw detection information and useful insights, the
+system has an interactive visualization dashboard implemented with Streamlit, a
+strong and lightweight Python framework for data apps. The dashboard dynamically
+visualizes pothole locations on an interactive map based on the GPS data attached
+with each detection. Users are able to zoom in to examine individual pothole
+detection or zoom out to view pothole density at the macro level for whole cities or
+regions. In addition to geospatial visualization, the dashboard also offers statistical
+data, including pothole size distributions and estimated volumes, enabling
+Page | 27
+Dept. of CSE, ASE, Bangalore
+
+System Implementation​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+decision-makers to instantly see the most impactful areas that require repair.
+Historical trends are also represented in the form of charts and graphs, allowing for
+tracking of progress over time or identification of recurring problems. Automated
+email notifications and report generation are supported by the dashboard so that key
+stakeholders can be kept informed without any need for manual data preparation or
+analysis. Future enhancements such as predictive analytics and AI-based repair
+scheduling can be easily incorporated into this flexible system.
+
+5.8 System Implementation
+The end-to-end pothole detection system is carefully designed to provide
+real-time detection, geotagging, storage, and visualization of pothole information with
+minimal human effort. At the heart of the system is a Raspberry Pi 3, which was
+selected for its affordability, portability, and ability to process moderate-level
+computational operations efficiently even under difficult field conditions. The
+Raspberry Pi 3 is particularly suited for deployment in isolated or mobile conditions
+where standard, larger-scale computing hardware is not practicable. It can be easily
+integrated with a Pi camera to produce high-resolution images of road surfaces, and it
+has processing capabilities adequate for the instantaneous analysis of potholes found.
+After the potholes are detected, the system geotags them to note their precise
+locations and stores the data for future analysis and visualization. The design of the
+system allows it to be able to run independently, with little requirement for direct
+human intervention, providing an efficient and scalable solution for real-time road
+maintenance monitoring.
+The Raspberry Pi 3 is driven by a quad-core Cortex-A53 processor running at
+1.4GHz with 1GB of RAM, which is more than adequate for light AI inference
+applications. In order to support the constrained hardware resources, the system
+employs the YOLOv12 Nano model, an extremely optimized and lightweight object
+detection model that is specifically tailored for low-power hardware. YOLOv12 Nano
+Page | 28
+Dept. of CSE, ASE, Bangalore
+
+System Implementation​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+strikes a good balance between speed and accuracy effectively, enabling real-time
+pothole detection from live video or static images without inducing substantial
+processing delay. Input image resolutions are dynamically scaled to achieve optimal
+performance, and extraneous background processes are kept at a minimum.
+The Raspberry Pi 3 executes the pothole detection pipeline completely at the
+edge, which means object detection, GPS geolocation, MIDAS model-based depth
+estimation, and initial metadata preparation are all performed locally on the device
+itself. This breaks the reliance on real-time internet connectivity, a highly desirable
+aspect for use cases in remote or underdeveloped regions where network connectivity
+is slow or nonexistent. After the stably connected internet is obtained, the locally
+stored detection results such as pothole images, metadata (GPS coordinates,
+timestamps, bounding box sizes, depth estimates), and the corresponding files are
+uploaded to Google Cloud Storage automatically for centralized data management.
+Through the utilization of the Raspberry Pi 3 capabilities, the system provides
+an affordable, energy-saving, and portable solution for ongoing road monitoring and
+pothole maintenance. The system is designed to provide precise pothole detection and
+reporting even with limited hardware, and this can be reliably sustained, playing a
+huge role in more intelligent, data-based road maintenance strategies. The minimal
+hardware requirements also enable large-scale deployment in extensive road networks
+without incurring exorbitant costs.
+
+Page | 29
+Dept. of CSE, ASE, Bangalore
+
+System Testing​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+CHAPTER - 6
+SYSTEM TESTING
+System testing was done to validate the overall system functionality and ensure
+that all modules worked together in harmony. The purpose of this stage was to
+thoroughly test that the system meets both its functional and non-functional
+requirements once deployed in a real environment, simulating conditions like
+different road types, lighting, and traffic interference. Focus was put on ensuring
+reliable performance and running of all the aspects of the system. Testing commenced
+by establishing the pothole detection capability through the utilization of the Pi
+Camera on top of the Raspberry Pi 3. The system effectively captured decent quality
+road imagery and identified potholes as a result of combining image handling
+algorithms in the Python and OpenCV frameworks. This was achieved by examining
+image frames for pothole features, including shape and color contrast, so as to ensure
+stable detection under fluctuating weather and illumination conditions. The detection
+algorithm demonstrated consistent performance across a vast number of test cases.
+Once the detection was successfully done, the second test concentrated on
+assessing the image upload mechanism to the Google cloud server. The system easily
+transferred the taken images through the internet connectivity of the Raspberry Pi
+with minimal delay, ensuring fast and reliable transfer. The images were safely kept
+in the cloud, employing encryption mechanisms to secure the data both during
+transmission and storage. This verification certified the system's capacity to offer
+remote storage of data via internet-enabled links so that the data could be accessed
+and analyzed remotely from anywhere with internet connectivity. This feature was
+important for enabling remote decision and monitoring, enabling the maintenance
+teams to effectively monitor pothole locations, determine repair requirements, and
+organize actions effectively. The data storage and retrieval capability from the cloud
+also turned out to be critical to scalability since the system can be scaled to service
+more area and data without requiring considerable local infrastructure. The feature
+Page | 30
+Dept. of CSE, ASE, Bangalore
+
+System Testing​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+also made the system prepared for actual deployment in real municipal street
+maintenance operations where remote accessibility and management of data are
+essential for effective and timely response.
+System testing was also expanded to test the image segmentation module,
+which correctly distinguished pothole regions from the rest of the road in the images
+being processed. Advanced methods were utilized by the segmentation module to
+recognize pothole areas, despite images having mixed textures or garbage. This
+facility was crucial in supporting the follow-up clustering and repair planning
+procedures. After segmentation, the system was able to identify and group nearby
+potholes, maximizing the repair process. The clustering algorithm considered spatial
+relationships among identified potholes, allowing the system to group those that were
+close to each other for more effective repair planning. Through identifying areas
+where several potholes could be repaired at once, the system optimized repair
+management, minimizing both repair time and material consumption.
+Finally, the system's ability to accurately estimate the volume of repair material
+necessary was tested to the fullest. Utilizing information on pothole diameter, road
+surface type, and past repair patterns, the system properly computed the volume of
+materials required for every repair situation. Based on the depth and width of
+potholes, as well as the surface material type, the system made certain that the
+required repair material quantity was accurately predicted, thus ensuring minimal
+over- or under-utilization of materials. This feature was instrumental in making the
+repair process cost-saving and efficient in terms of resource utilization, as it
+optimized material allocation by actual use instead of estimates or personal opinions.
+In addition, this ability helped mitigate waste, enhance material use, and maintain that
+the overall maintenance work was executed with maximum effectiveness, all of
+which are needed for efficient long-term municipal road repair and maintenance
+operations.
+
+Page | 31
+Dept. of CSE, ASE, Bangalore
+
+System Testing​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+Every component of the system was thoroughly tested within a fully integrated
+setting, leveraging the real hardware and software implementations, such as the
+Raspberry Pi 3, Pi Camera, Google cloud APIs, and local storage using SQLite. This
+broad testing strategy validated that every part of the system, from the capture and
+processing of images through cloud storage to repair planning, operated harmoniously
+together. End-to-end functionality was rigorously tested to ensure the system worked
+as designed in the conditions found on real-world roads, varying by road type,
+weather conditions, and road maintenance complexity. Testing the system evaluated
+reliability, performance, and precision across various conditions to affirm the
+capability of processing live data and providing consistency. The outcome showed
+that not only does the system work well but is also scalable, being able to process
+larger datasets and extend to operate over wider regions. Moreover, the system's
+robustness under varied operating conditions reflected its aptness for real-world
+municipal road maintenance applications, where real-time detection, planning for
+repair, and estimation of materials are of importance for cost-effectiveness and
+efficiency.
+
+Page | 32
+Dept. of CSE, ASE, Bangalore
+
+Results and Analysis​ ​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+CHAPTER – 7
+RESULTS AND ANALYSIS
+The end-to-end pothole detection system implemented on the Raspberry Pi 3
+platform showed outstanding real-world performance in extensive field trials, with its
+everyday applicability despite the limited computational capabilities of the hardware.
+The system was highly accurate in detection and responsive, successfully trading off
+the requirements of real-time processing against the limitations of lightweight edge
+computing. This brilliant performance was made possible through the inclusion of the
+optimized YOLOv12 Nano model (See Fig. 7.1 for the comparison of various YOLO
+nano models), which was designed to work specifically on low-resource
+environments. The model allowed for fast and reliable pothole detection with low
+latency, making it possible for the system to run effectively without needing to use
+high-spec hardware. Additionally, it was shown to detect potholes on a diverse range
+of road surface types—such as asphalt, gravel, and concrete—and in diverse lighting
+and weather conditions. This flexibility further emphasized the system's resilience
+and its potential for deployment across a wide range of environments, from
+high-density urban environments to low-density rural areas, rendering it a scalable
+and cost-effective solution for intelligent infrastructure monitoring.
+The robustness and reliability of the system were extensively tested in a
+number of extreme real-world situations. It provided accurate detection results
+repeatedly under stressful conditions like low light, rain, and on rough terrain like
+unpaved roads, gravel, and cobblestone—environments that generally degrade the
+performance of standard detection models. In spite of these environmental
+complexities, the model proved to be remarkably resilient, retaining its effectiveness
+without considerable declines in accuracy or responsiveness. This resilience
+highlighted the model's flexibility and strengthened its suitability for deployment in
+urban and rural environments, where road surface conditions and weather can differ
+Page | 33
+Dept. of CSE, ASE, Bangalore
+
+Results and Analysis​ ​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+considerably. The capacity to reliably detect potholes under such varied conditions
+not only testifies to the robustness of the model but also highlights the importance of
+trusted detection systems in providing reliable road condition estimates, which are
+key to prompt maintenance and public safety.
+
+Fig 7.1. Comparison of YOLO nano models
+When potholes are found close to one another, they are first identified as
+individual entities but are deliberately grouped together for repair purposes. The
+potholes are identified using images, videos, and even in real-time, with high-end
+image processing methods ensuring precise identification and localization. After
+detection, the system will purposefully group nearby potholes according to their
+spatial proximity (See Fig. 7.2, Fig. 7.3, Fig. 7.4, Fig. 7.5 and Fig. 7.6) so that the
+Page | 34
+Dept. of CSE, ASE, Bangalore
+
+Results and Analysis​ ​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+repair process becomes more feasible and effective. By grouping several close-by
+potholes, the system facilitates filling several potholes at once, saving on materials
+and labor time for manual repairs.
+
+Fig 7.2. Image pothole detection output
+
+Fig 7.3. Video Pothole detection output
+
+Fig 7.4. Real time pothole detection
+
+The clustering method maximizes the distribution of repair material to only use
+what is required, and it increases the efficiency of the repair process. It reduces road
+Page | 35
+Dept. of CSE, ASE, Bangalore
+
+Results and Analysis​ ​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+maintenance by filling next to each other potholes as one repair area, thereby making
+it a cost-saving, efficient, and environmentally friendly solution to road repairs.
+Moreover, it ensures that resources are used efficiently, preventing wastage of
+materials and labor, and ultimately resulting in precise and lasting repair results.
+
+Fig 7.5. Pothole detection video format
+
+Fig 7.6. Example of segmentation of
+
+through Pi3 interface
+
+pothole from image
+
+The integration of a GPS module greatly improved the overall efficacy of the
+pothole detection system by allowing accurate geotagging of each detected pothole.
+Each detection incident was automatically tagged with its own exact geographic
+location—latitude and longitude—that was directly embedded in the respective image
+files and simultaneously documented in formatted JSON records (See Fig. 7.7 and
+Fig. 7.8.) for efficient data handling. This accurate spatial labeling not only enabled
+smooth mapping and visualization of pothole locations but also supported
+sophisticated location-based analysis, allowing maintenance crews to prioritize
+repairs by geographic clustering or severity within particular zones. Additionally, it
+enabled municipal governments and road maintenance agencies to effectively monitor
+repeat problems in particular areas, schedule best routes for repair, and allocate
+resources more efficiently. The geolocation functionality thus played an important
+Page | 36
+Dept. of CSE, ASE, Bangalore
+
+Results and Analysis​ ​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+part in making the shift from reactive maintenance strategies to proactive, data-driven
+infrastructure management.
+
+Fig 7.7. Saving of Metadata in JSON file
+
+Fig 7.8. JSON file of a pothole image detection
+Furthermore, the depth estimation task was dealt with effectively by the
+Page | 37
+Dept. of CSE, ASE, Bangalore
+
+Results and Analysis​ ​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+MIDAS model, which performed well in light of the computational constraints of the
+Raspberry Pi hardware. Running smoothly within the system's lightweight
+framework, the model generated precise and reliable estimates of pothole depth and
+volume—the paramount measures for assessing the extent of road damage and
+prescribing the right amount of repair material needed. This ability provided an
+important depth of understanding above simple detection, allowing maintenance
+crews to make intelligent choices based on each pothole's physical composition. The
+successful real-time execution of such a sophisticated deep learning model on
+power-constrained edge hardware like the Raspberry Pi demonstrated the viability
+and promise of leveraging power-aware hardware to support sophisticated computer
+vision applications, supporting the system's fit for cost-effective and scalable
+infrastructure monitoring in the field.
+
+Fig 7.9. Functioning of servo motor after volume detection on Pi3 interface
+
+​
+
+The filling mechanism based on servo motor operated in direct synchrony with
+Page | 38
+
+Dept. of CSE, ASE, Bangalore
+
+Results and Analysis​ ​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+system depth and volume estimation outputs. At every pothole detected, the volume
+estimate was utilized to calculate the exact time when the servo motor was open,
+enabling correct dispensing of fill material. Volume-to-time correlation ensured that
+material release was proportional to the pothole size, avoiding underfilling and
+wastage. The volume of each pothole was determined in cubic centimeters, and the
+equivalent servo motor open time was determined in seconds (See Fig. 7.9. for the
+volume calculation and the number of seconds the servo motor is open for). The
+findings validated a consistent linear correlation between estimated volume and servo
+activation time, confirming the system's capability to automate repair activities using
+real-time data. This methodology enabled systematic material supply that is
+responsive to real damage, minimizing the utilization of resources and facilitating
+effective on-site repairs with low manual involvement.
+
+Fig 7.10. Cloud Storage of pothole info
+
+Data handling was yet another vital system strength that played a major role in
+Page | 39
+Dept. of CSE, ASE, Bangalore
+
+Results and Analysis​ ​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+ensuring the system's reliability and useability in practice. The system automatically
+pushed data gathered on site—images, geotags, and metadata—to Google Cloud
+Storage (See Fig, 7.10.) as soon as there was an active internet connection, assuring
+perfect cloud integration and centralized access for analysis. Notably, where
+connectivity did not exist—in underdeveloped or remote regions—the system fell
+back to a backup mechanism that encrypted all data securely locally on the Raspberry
+Pi. When connectivity was restored, stored data was immediately synchronized with
+the cloud so that there would be no loss of information while operating offline. This
+wise management of network variations maintained data integrity, facilitated
+unbroken functionality, and rendered the system very reliable for continuous field
+deployment in various geographic environments.
+Visualization-wise, the system had a Streamlit-driven dashboard that provided
+interactive and easy-to-use insights, maximizing the general accessibility and
+usefulness of data gathered. The dashboard displayed pothole sites on an interactive
+map, enabling users to get a real-time spatial overview of road damage in areas under
+surveillance. In addition to mapping, it provided detailed statistical analysis, such as
+the number and average size of potholes found, and depth and volume trends over
+time. It also allowed for comparisons between current and past data, enabling
+stakeholders to spot patterns or recurring problems. These detailed visualizations
+gave city managers, maintenance crews, and urban planners the ability to measure
+repair
+
+effectiveness,
+
+set
+
+maintenance
+
+interventions
+
+based
+
+on
+
+data-driven
+
+recommendations, and move away from reactive to proactive infrastructure
+management. By converting raw data into actionable graphics, the dashboard was
+instrumental in facilitating informed decision-making and resource maximization.
+Overall, the system effectively bridged the gap between low-cost edge
+computing and sophisticated infrastructure monitoring, showcasing the immense
+potential of marrying cheap hardware with cutting-edge machine learning algorithms
+and hassle-free cloud connectivity. With the coming together of these, the solution
+Page | 40
+Dept. of CSE, ASE, Bangalore
+
+Results and Analysis​ ​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+was able to deliver real-time, data-sourced inputs for road maintenance without
+needing costly or heavy-resource configurations. This blend of performance and price
+makes the system particularly worthwhile for scalable deployment in regions with
+limited technical means or budget. Its design facilitates wide use, from the
+high-density urban environments to remote rural areas, where successful
+transportation
+
+infrastructure
+
+monitoring
+
+is
+
+commonly
+
+prohibited
+
+by
+
+cost
+
+considerations. In the end, the strategy reflects a visionary approach to smart city
+development—one that prioritizes accessibility, efficiency, and the transformational
+potential of intelligent, networked systems in improving public infrastructure
+management.
+
+7.1 Prototype Implementation and Integration:
+
+Fig. 7.11. Prototype of the automated pothole detection and repair system using
+Raspberry Pi3, Pi Camera, and Servo motor-controlled dispensing unit
+
+​
+
+The picture (See 7.11) shows the assembled prototype of the pothole detection
+
+and repair system, developed on a two-wheel drive robot platform with a Raspberry
+Page | 41
+Dept. of CSE, ASE, Bangalore
+
+Results and Analysis​ ​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+Pi 3 controlling it. A Pi Camera is attached through a ribbon cable to capture
+real-time road images, which are input into the pothole detection module. The
+hardware setup comprises the necessary elements like motor drivers, GPIO-attached
+sensors, and structured wiring for controlling the system. Noteworthy is the
+incorporation of a servo motor in the prototype to drive the dispensing mechanism
+that is used to release the computed quantity of repair material into identified
+potholes. The miniature cardboard unit at the back symbolizes a conceptual
+representation of the filling module employed in simulation cases. This portable and
+small system successfully shows the integration of computer vision, embedded
+hardware, and servo-controlled actuation and is thus applicable for autonomous road
+maintenance with less human intervention.
+
+Page | 42
+Dept. of CSE, ASE, Bangalore
+
+Conclusion and Future Scope​ ​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+CHAPTER – 8
+CONCLUSION AND FUTURE SCOPE
+The creation of this pothole detection and reporting system represents a key
+milestone in the quest for intelligent road upkeep and intelligent city infrastructure.
+Centered on the performance of the system is the application of the YOLOv12 Nano
+model, a performance-optimized variant of the YOLO (You Only Look Once) object
+detection model, explicitly designed to run in low resource environments. Through
+the use of YOLOv12 Nano, the system strikes a very efficient balance between
+detection precision, processing speed, and model efficiency, which is essential to
+maintaining real-time responsiveness on small, low-power edge devices such as the
+Raspberry Pi 3. In contrast to its larger equivalents or previous YOLO variants that
+tend to demand powerful GPUs and large memory resources, YOLOv12 Nano is
+optimized for speed and accuracy without sacrificing detection quality. This enables
+seamless, real-time field operation, and hence it is best suited for mobile or embedded
+applications. The system thus provides portability as well as cost-effectiveness in
+addition to providing tremendous potential for large-scale deployment in various
+urban and rural settings where conventional infrastructure-intensive solutions may
+not be possible. Its hardware light and scalable nature makes it an attractive option
+for municipalities looking to implement smart city technologies at minimal cost of
+implementation.
+The system takes into account many essential aspects of quality pothole
+monitoring in a seamless fusion of cutting-edge detection, localization, measurement,
+storage, and visualization technologies. On its core, it relies on strong deep
+learning-based object detection methods using well-annotated datasets of Roboflow
+for accurate pothole discrimination against other analogous road defects. This greatly
+reduces the risk of false positives and guarantees that the data gathered is accurate,
+Page | 43
+Dept. of CSE, ASE, Bangalore
+
+Conclusion and Future Scope​ ​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+consistent, and extremely reliable for decision-making. In addition, the inclusion of
+precise geolocation mapping via GPS modules adds spatial context to every
+detection, allowing geographic trend analysis and intelligent repair scheduling. One
+of the most significant improvements is the incorporation of the MIDAS monocular
+depth estimation algorithm, which enables the system not only to be aware of the
+presence of potholes but also to estimate their depth and volume with high accuracy.
+This volumetric analysis provides a critical new dimension to repair planning,
+enabling municipal governments and maintenance crews to assess the severity of
+every pothole and rank responses by potential damage or safety hazard. Essentially,
+the system goes beyond mere detection and enters the domain of intelligent
+diagnostics by integrating several layers of information—visual, spatial, and
+volumetric—thus optimizing the entire pothole management process and making the
+best use of scarce maintenance resources.
+Operating solely on the Raspberry Pi 3 platform, the system is a testament to
+the potential and viability of edge computing by supporting all essential
+functionality—image processing, detection, and metadata extraction—without
+needing constant internet connectivity. This methodology minimizes the necessity for
+ongoing connectivity while still allowing important data to be gathered, processed,
+and stored locally during offline time. Once connectivity is available, the system
+automatically transfers all the stored images and metadata—like GPS coordinates,
+timestamps, and estimates of pothole volume—to Google Cloud Storage, building a
+centralized, easily accessible repository for in-depth analysis. This integration with
+the cloud not only allows for long-term data storage and tracking of infrastructure
+performance but also facilitates the detection of repeated patterns or hotspot areas that
+need more frequent maintenance. Augmenting this process further is a richly visual,
+Streamlit-based dashboard that enables urban planners, road maintenance crews, and
+local governments to engage with real-time data via a simple graphical interface. The
+dashboard delivers extensive spatial visualization of pothole locations mapped onto
+
+Page | 44
+Dept. of CSE, ASE, Bangalore
+
+Conclusion and Future Scope​ ​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+geography, statistical aggregates of damage detected, depth and volume trends over
+time, and comparisons between current versus historical road conditions. These
+findings enable strategic planning, enhanced allocation of repair assets, and informed
+decision-making to enhance road safety and efficiency in both urban and rural
+settings.
+Overall, through strategic emphasis on the most important deployability
+considerations like low power usage, miniaturization, cost-effectiveness, and
+user-friendliness, the system designed in this project provides a complete and lasting
+solution
+
+to
+
+one
+
+of
+
+the most enduring
+
+problems
+
+of urban
+
+and rural
+
+infrastructure—detection and management of potholes. Its success is the ability to
+bring high-performance models such as YOLOv12 Nano, which have the best
+possible accuracy-to-speed ratio, into play with economical and low-cost hardware
+platforms such as the Raspberry Pi 3. This keeps the system powerful while also
+making it scalable to a point where it can be easily deployed en masse without
+prohibitive financial or technical hurdles. In addition, seamless integration with cloud
+services such as Google Cloud Storage and interactive visualisation through Streamlit
+dashboards provides an element of operational awareness and user availability that
+takes the system above and beyond mere automation. It serves to prove that carefully
+selected, light-weight AI models—given adequate hardware performance and cloud
+ecosystems—can bring about transformation to public sector provision. The outcome
+is an evidence-based, responsive, and affordable road safety and maintenance strategy
+that not only enhances the quality of public infrastructure but also assists municipal
+agencies in optimizing their resource planning and minimizing long-term
+maintenance expenses, which in turn leads to more intelligent and resilient cities.
+
+8.1 FUTURE SCOPE
+While the existing pothole detection system shows remarkable efficiency and
+high feasibility for real-world application, a number of potential future research
+Page | 45
+Dept. of CSE, ASE, Bangalore
+
+Conclusion and Future Scope​ ​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+directions can potentially extend its capabilities and influence significantly. One such
+promising direction is multi-camera integration, which would enable simultaneous
+capture of potholes from various viewpoints. In contrast to the present monocular
+setup, a multi-camera arrangement could afford a broader view of every pothole,
+allowing for better depth and volume estimation using triangulation or stereo vision
+methods. This would negate the intrinsic deficiency of single-camera depth
+estimation, resulting in more accurate and dependable pothole severity assessments.
+These developments would not only enhance the accuracy of damage assessment but
+also enhance the system's overall functionality for wise decision-making in
+infrastructure maintenance.
+Furthermore, deployment of real-time alert systems is a useful addition to the
+existing infrastructure, enabling instantaneous notification of proximate municipal
+maintenance crews upon detection of a pothole. Such instant notification can decrease
+the response times significantly, facilitating faster deployment of repair crews and
+curbing the development of road degradation. In addition, by incorporating the
+detection system with a centralized traffic management server, authorities would be
+able to dynamically control traffic flow based on newly detected potholes. This could
+involve redirecting vehicles from impacted areas, thus minimizing the risk of
+accidents, vehicle damage, and traffic congestion. Such an active strategy not only
+enhances road safety but also shows how smart infrastructure solutions can lead to
+more responsive and adaptive urban transportation networks.
+Another significant enhancement would be the integration of predictive
+analytics, using historical pothole incidence data to predict future road damage.
+Through machine learning algorithms on the gathered dataset, the system can
+examine weather patterns, road material deterioration rate, and traffic load patterns to
+determine when and where potholes are likely to occur. This foresight would allow
+city planners to act proactively, for example, by strengthening or preserving at-risk
+
+Page | 46
+Dept. of CSE, ASE, Bangalore
+
+Conclusion and Future Scope​ ​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+portions of road before potholes even form. By fixing potential trouble spots in
+advance, cities could greatly lower the cost of reactive repairs and reduce traffic
+disruption. This transition from reactive to predictive maintenance would not only
+reduce long-term repair costs but also assist in optimizing resource allocation,
+ultimately resulting in more efficient and cost-saving road management practices.
+Moreover, extending the system to recognize other forms of road defects—like
+displaced manhole covers, crack serves, or obstructions—would convert the existing
+pothole detection system into a full-fledged road health monitoring system. Through
+multi-class detection, the system would not only be able to recognize potholes but
+also alert about a larger array of road conditions that may introduce safety hazards or
+impact traffic flow. This increased capability would give a better picture of the
+general state of road infrastructure, allowing maintenance activities to be prioritized
+against a wider range of issues. With the capacity to identify and evaluate different
+road damage types in real time, cities would be able to manage resources more
+effectively, respond to urgent hazards more quickly, and prepare for complete road
+repairs, ultimately enhancing urban road network safety and lifespan.
+Finally, installing the system on a large scale over entire cities or highways,
+backed by automated reporting and aggregation software, may enable the
+establishment of comprehensive road quality indexes, which would be a treasure
+trove for smart city planning. These indexes would offer a real-time, dynamic
+evaluation of road conditions, giving a data-based method for managing
+infrastructure. In addition to helping local governments with timely repair and
+maintenance prioritization, these indexes may be incorporated into a range of external
+systems, including insurance companies, navigation apps, and transportation services.
+For insurance companies, reliable road condition information may enable improved
+risk assessment and pricing models, while navigation apps may provide drivers with
+real-time alerts for road hazards, enhancing overall safety. Transport services could
+
+Page | 47
+Dept. of CSE, ASE, Bangalore
+
+Conclusion and Future Scope​ ​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+refine routes according to latest road health information, saving on vehicle wear and
+tear and increasing efficiency. Eventually, this mass integration would not only
+enhance road safety levels but also create a more integrated, data-driven urban
+mobility ecosystem.
+In short, with the incorporation of technical extensions like multi-view
+analysis, real-time alerting, predictive maintenance, and multi-anomaly detection, the
+current pothole detection system can turn into a top-notch and powerful solution for
+smart infrastructure management. All these add-ons would massively augment the
+abilities of the system to detect road issues of even greater variety, predict damage
+down the line, and send notifications immediately for remedial action that requires
+urgent intervention. Through the use of multi-camera systems for better depth and
+volume estimates, real-time communication with city crews for quicker response
+times, and predictive analytics for proactive maintenance, the system can better
+allocate resources and prioritize repairs. In addition, expanding the system to identify
+types of road irregularities such as manhole cover dislocations, cracks, or road
+obstructions would guarantee that no road condition is overlooked, which, in turn,
+would improve overall safety and efficiency of urban infrastructure. As such, this
+smart system would be a key enabler in constructing safer, wiser, and more resilient
+cities, where infrastructure is monitored at all times, road maintenance is
+evidence-based, and urban environments are more prepared to face the challenges of
+tomorrow.
+
+Page | 48
+Dept. of CSE, ASE, Bangalore
+
+References​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+REFERENCES
+[1]​
+Arjun Paramarthalingam, J. Sivaraman, Prasannavenkatesan Theerthagiri, B.
+Vijayakumar, and V. Baskaran, “A deep learning model to assist visually impaired in pothole
+detection using computer vision,” Decision Analytics Journal, vol. 12, pp. 100507–100507,
+Aug. 2024, doi: https://doi.org/10.1016/j.dajour.2024.100507.
+[2]​
+S. N. Gujar, P. Shinde, S. Parihar, A. P., and S. Y., “Pothole detection system using
+YOLO v8,” International Research Journal of Modernization in Engineering Technology,
+2024.
+[3]​
+L. V. Fortin, A. R. V. D. Santos, P. J. B. Cagud, P. R. Castor, and O. E. Llantos, “Eyeway:
+An Artificial Intelligence Of Things Pothole Detection System With Map Visualization,”
+Procedia Computer Science, vol. 251, pp. 216–223, Dec. 2024, doi:
+https://doi.org/10.1016/j.procs.2024.11.103.
+[4]​
+C. Gheorghe, M. Duguleana, R. Boboc, and C. Postelnicu, “Analyzing real-time
+object detection with YOLO algorithm in automotive applications: A review,” Computer
+Modeling in Engineering & Sciences, vol. 141, pp. 1939–1981, 2024.
+[5]​
+V. Kaushik and B. S. Kalyan, “Pothole detection system: A review of different
+methods used for detection,” in 2022 Second International Conference on Computer Science,
+Engineering and Applications (ICCSEA), 2022, pp. 1–4.
+[6]​
+N. Ma, J. Fan, W. Wang, J. Wu, Y. Jiang, L. Xie, and R. Fan, “Computer vision for
+road imaging and pothole detection: a state-of-the-art review of systems and algorithms,”
+Transportation Safety and Environment, vol. 4, no. 4, p. tdac026, 2022.
+[7]​
+Y. Safyari, M. Mahdianpari, and H. Shiri, “A review of vision-based pothole
+detection methods using computer vision and machine learning,” Sensors, vol. 24, no. 5652,
+2024.
+[8]​
+M. Jakubec, E. Lieskovská, B. Bučko, and K. Zábovská, “Comparison of CNN-based
+models for pothole detection in real-world adverse conditions: Overview and evaluation,”
+Applied Sciences, vol. 13, p. 5810, 2023.
+[9]​
+S. Saleh, A. Jolfaei, and M. Tariq, “Real-time pothole detection with edge
+intelligence and digital twin in internet of vehicles,” IEEE Internet of Things Journal, 2024.
+[10]​ Y. Yin, W. Fu, X. Ma, J. Yu, X. Li, and Z. Dong, “Road surface pits and speed bumps
+recognition based on acceleration sensor,” IEEE Sensors Journal, vol. 24, no. 7, pp.
+10669–10679, 2024.
+
+Page | 49
+Dept. of CSE, ASE, Bangalore
+
+References​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+May, 2025
+
+[11]​ N. Bhavana, M. M. Kodabagi, B. M. Kumar, P. Ajay, N. Muthukumaran, and A.
+Ahilan, “POT-YOLO: Real-time road potholes detection using edge segmentation based
+YOLO v8 network,” IEEE Sensors Journal, 2024.
+[12]​ C. Ruseruka, J. Mwakalonge, G. Comert, S. Siuhi, F. Ngeni, and Q. Anderson,
+“Augmenting roadway safety with machine learning and deep learning: Pothole detection and
+dimension estimation using in-vehicle technologies,” Machine Learning with Applications,
+vol. 16, p. 100547, 2024.
+[13]​ C. Peralta-López, J. G. Ortega-Mendoza, G. García-Pérez, and D.
+Hernández-Balbuena, “A pothole detection system based on deep learning using stereo
+vision,” Sensors, vol. 23, no. 10, p. 4697, 2023.
+[14]​ I. Ahmad, M. I. Malik, M. Ahmed, and F. Alkhateeb, “Pothole detection and
+classification using deep learning with transfer learning approach,” Electronics, vol. 12, no.
+2, p. 305, 2023.
+[15]​ P. Singh, R. Wijethunga, A. Sadhu, and J. Samarabandu, “Expert evaluation system
+for pothole defect detection,” Expert Systems with Applications, vol. 277, p. 127280, 2025.
+[16]​ S. Chen, K. Yao, Y. Wang, X. Huang, Y. Chen, A. Yang, J. Li, and G. Min,
+“Multi-scene auxiliary network-based road crack detection under the framework of
+distributed edge intelligence,” IEEE Internet of Things Journal, 2025.
+[17]​ J. Zhong, D. Kong, Y. Wei, and B. Pan, “YOLOv8 and point cloud fusion for
+enhanced road pothole detection and quantification,” Scientific Reports, vol. 15, no. 1, p.
+11260, 2025.
+[18]​ R. Rout, S. Mohanty, and R. Panda, “Enhanced pothole detection using YOLOv7 and
+ESRGAN,” arXiv preprint arXiv:2401.08588, 2023.
+[19]​ M. Parasnis, K. Joshi, and H. Shah, “RoadScan: A transfer learning based
+autonomous pothole detection framework,” arXiv preprint arXiv:2308.03467, 2023.
+[20]​ J. Dib, K. Sirlantzis, and G. Howells, “An annotated water-filled, and dry potholes
+dataset for deep learning applications,” Data in Brief, vol. 48, p. 109206, 2023.
+[21]​ S. Palwe et al., “An intelligent and deep learning approach for pothole surveillance
+smart application,” Procedia Computer Science, vol. 235, pp. 3271–3282, 2024.
+
+Page | 50
+Dept. of CSE, ASE, Bangalore
+
+
