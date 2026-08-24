@@ -1,0 +1,1072 @@
+FORM 2
+THE PATENTS ACT, 1970
+(39 OF 1970)
+&
+The Patent Rules, 2003
+COMPLETE SPECIFICATION
+(see sections 10 & rule 13)
+1. TITLE OF THE INVENTION
+
+POTHOLE DETECTION AND REPAIR SYSTEM AND METHOD THEREOF
+2. APPLICANT (S)
+NAME
+
+NATIONALITY
+
+ADDRESS
+Amrita Vishwa Vidyapeetham,
+
+Amrita Vishwa Vidyapeetham
+
+IN
+
+Bengaluru Campus, Kasavanahalli,
+Carmelaram P.O., Bengaluru 560035, Karnataka, India.
+
+3. PREAMBLE TO THE DESCRIPTION
+COMPLETE SPECIFICATION
+The following specification particularly describes the invention and the manner in which it is
+to be performed.
+
+1
+
+TECHNICAL FIELD
+[0001]
+
+The present disclosure relates generally to the field of road
+
+maintenance and repair. More specifically, it pertains to a system and method for
+automated detection and repair of potholes on road surfaces.
+5
+BACKGROUND
+[0002]
+
+Background description includes information that may be useful in
+
+understanding the present invention. It is not an admission that any of the
+information provided herein is prior art or relevant to the presently claimed
+10
+
+invention, or that any publication specifically or implicitly referenced is prior art.
+[0003]
+
+Road infrastructure is an essential component of transportation
+
+systems, supporting the movement of goods, services, and people across regions;
+however, road surfaces are exposed to environmental conditions, varying vehicular
+loads, and weather effects, which gradually lead to the formation of surface
+15
+
+irregularities such as potholes that affect traffic flow and increase maintenance
+requirements. Technologies for road maintenance include visual inspection
+methods, sensor-based monitoring, and manual repair operations, yet these
+approaches often involve delays, limited integration, and reduced precision in
+identifying the location and extent of surface defects, which can result in extended
+
+20
+
+maintenance cycles and increased operational effort.
+[0004]
+
+Existing techniques for detecting road defects include periodic
+
+surveying, manual inspection, or post-reporting of damaged areas. These
+techniques provide limited information regarding the size and volume of potholes
+and rely on human intervention for assessment and repair planning; while some
+25
+
+automated or image-based systems have been explored, their use in large-scale road
+maintenance is often constrained by processing requirements, equipment
+dependence, or lack of integration with repair and reporting systems, making realtime intervention and coordinated planning challenging.
+[0005]
+
+30
+
+Accurate estimation of repair material requirements, tracking of
+
+repaired areas, and systematic reporting are additional aspects that are not fully
+
+2
+
+addressed in current practices, leading to inefficiencies in planning and resource
+management.
+[0006]
+
+Therefore, there is a need for a solution that can improve
+
+identification and assessment of potholes, facilitate timely repair operations,
+5
+
+provide structured reporting of repair activities, and optimize use of maintenance
+resources while maintaining operational efficiency.
+
+OBJECTS OF THE PRESENT DISCLOSURE
+[0007]
+10
+
+A general object of the present disclosure is to provide a system and
+
+method capable of detecting and identifying potholes on road surfaces with high
+accuracy and reliability, enabling continuous monitoring of road conditions.
+[0008]
+
+An object of the present disclosure is to provide a system and
+
+method that determines the dimensions, depth, and volume of detected potholes,
+allowing precise assessment of road surface defects.
+15
+
+[0009]
+
+Another object of the present disclosure is to provide a system and
+
+method that facilitates the repair of detected potholes, ensuring restoration of road
+surfaces and maintaining consistent road quality.
+[0010]
+
+Another object of the present disclosure is to provide a system and
+
+method that generates structured and comprehensive reports supporting
+20
+
+transparency, record-keeping, and efficient planning of road maintenance activities.
+
+SUMMARY
+[0011]
+
+Aspects of the present disclosure relate generally to the field of road
+
+maintenance and repair. More specifically, it pertains to a system and method for
+25
+
+automated detection and repair of potholes on road surfaces. The present disclosure
+provides a comprehensive solution for real-time identification, precise assessment,
+controlled repair, and structured reporting of potholes, thereby improving
+operational efficiency, transparency, and resource utilisation in road maintenance
+activities.
+
+30
+
+[0012]
+
+An aspect of the present disclosure provides a pothole detection and
+
+repair system and method for road surfaces that integrates visual data acquisition,
+
+3
+
+geolocation, processor-based analysis, and controlled dispensing of repair material
+to enable real-time assessment and restoration of potholes. The system includes an
+image acquisition unit capable of acquiring live video, recorded footage, or static
+images of the road surface, which is processed by a processor executing a pothole
+5
+
+detection model to identify one or more potholes. The processor determines the
+dimensions and volume of each detected pothole by analysing the boundaries and
+evaluating the width, length, and depth of each defect. Each detected pothole is
+associated with geolocation data obtained from a global positioning receiver,
+providing precise location information for repair and reporting purposes.
+
+10
+
+[0013]
+
+The system further includes a dispensing assembly mounted on a
+
+mobile platform, comprising a container holding filler material, a dispensing nozzle
+in fluid communication with the container, and a driving unit disposed between the
+container and the dispensing nozzle. The processor generates control signals to
+actuate the driving unit, which dispenses a calculated volume of filler material into
+15
+
+each detected pothole based on the determined dimensions and volume. The
+processor evaluates repair costs associated with the volume of filler material used
+for each pothole and transmits the repair cost, geolocation data, and before-andafter visual data to a computing device, providing structured reporting and
+improved planning for road maintenance operations.
+
+20
+
+[0014]
+
+In addition, the processor can compare multiple detected potholes
+
+within the road surface and generate recommendations for resurfacing when a
+threshold number of potholes are identified, enabling strategic maintenance
+planning. The mobile platform is capable of traversing the road surface
+autonomously or under manual control, allowing flexibility in operation for various
+25
+
+road conditions. The processor identifies irregularities indicative of potholes and
+outputs precise boundaries for each detected defect, further enabling accurate
+determination of dimensions and volume. The processor also adjusts the dispensing
+flow rate based on the evaluated width, length, and depth, ensuring precise and
+efficient application of repair material.
+
+30
+
+[0015]
+
+Another aspect of the present disclosure pertains to a method
+
+including the steps of acquisition of visual data through an image acquisition unit,
+
+4
+
+processing by a processor executing a pothole detection model, determination of
+pothole dimensions and volume, association with geolocation data, and generation
+of control signals for repair execution. The method includes dispensing a calculated
+volume of filler material using a driving unit disposed between the container and
+5
+
+dispensing nozzle mounted on a mobile platform, and evaluating repair costs with
+transmission of structured data including cost, geolocation, and before-and-after
+visual documentation. The method further encompasses comparison of detected
+potholes for resurfacing recommendations, traversal of the mobile platform either
+autonomously or under manual control, and identification of road surface
+
+10
+
+irregularities for accurate boundary and dimension evaluation.
+
+BRIEF DESCRIPTION OF DRAWINGS
+[0016]
+
+The accompanying drawings are included to provide a further
+
+understanding of the present disclosure and are incorporated in and constitute a part
+15
+
+of this specification. The drawings illustrate exemplary embodiments of the present
+disclosure and, together with the description, serve to explain the principles of the
+present disclosure. The diagrams are for illustration only, which is thus not a
+limitation of the present disclosure.
+[0017]
+
+20
+
+FIG. 1 illustrates an exemplary block diagram of the proposed
+
+system for automated detection and repair of potholes, in accordance with an
+embodiment of the present invention.
+[0018]
+
+FIG. 2 illustrates an exemplary flow diagram of a method for
+
+automated detection and repair of potholes, in accordance with an embodiment of
+the present invention.
+25
+DETAILED DESCRIPTION OF THE PRESENT INVENTION
+[0019]
+
+The following is a detailed description of embodiments of the
+
+disclosure represented in the accompanying drawings. The disclosed embodiments
+are merely exemplary of the invention, which may be embodied in various forms.
+30
+
+The embodiments are in such detail as to clearly communicate the disclosure.
+However, the amount of detail offered is not intended to limit the anticipated
+
+5
+
+variations of embodiments; on the contrary, the intention is to cover all
+modifications, equivalents, and alternatives falling within the spirit and scope of the
+present disclosure as defined by the appended claims.
+[0020]
+5
+
+Embodiments of the present disclosure relate generally to the field
+
+of road maintenance and repair. More specifically, it pertains to a system and
+method for automated detection and repair of potholes on road surfaces.
+[0021]
+
+An embodiment of the present disclosure provides a pothole
+
+detection and repair system and method for road surfaces that integrates visual data
+acquisition, geolocation, processor-based analysis, and controlled dispensing of
+10
+
+repair material to enable real-time assessment and restoration of potholes. The
+system includes an image acquisition unit capable of acquiring live video, recorded
+footage, or static images of the road surface, which is processed by a processor
+executing a pothole detection model to identify one or more potholes. The processor
+determines the dimensions and volume of each detected pothole by analysing the
+
+15
+
+boundaries and evaluating the width, length, and depth of each defect. Each
+detected pothole is associated with geolocation data obtained from a global
+positioning receiver, providing precise location information for repair and reporting
+purposes.
+[0022]
+
+20
+
+The system further includes a dispensing assembly mounted on a
+
+mobile platform, comprising a container holding filler material, a dispensing nozzle
+in fluid communication with the container, and a driving unit disposed between the
+container and the dispensing nozzle. The processor generates control signals to
+actuate the driving unit, which dispenses a calculated volume of filler material into
+each detected pothole based on the determined dimensions and volume. The
+
+25
+
+processor evaluates repair costs associated with the volume of filler material used
+for each pothole and transmits the repair cost, geolocation data, and before-andafter visual data to a computing device, providing structured reporting and
+improved planning for road maintenance operations.
+[0023]
+
+30
+
+In addition, the processor can compare multiple detected potholes
+
+within the road surface and generate recommendations for resurfacing when a
+threshold number of potholes are identified, enabling strategic maintenance
+
+6
+
+planning. The mobile platform is capable of traversing the road surface
+autonomously or under manual control, allowing flexibility in operation for various
+road conditions. The processor identifies irregularities indicative of potholes and
+outputs precise boundaries for each detected defect, further enabling accurate
+5
+
+determination of dimensions and volume. The processor also adjusts the dispensing
+flow rate based on the evaluated width, length, and depth, ensuring precise and
+efficient application of repair material.
+[0024]
+
+Another embodiment of the present disclosure pertains to a method
+
+including the steps of acquisition of visual data through an image acquisition unit,
+10
+
+processing by a processor executing a pothole detection model, determination of
+pothole dimensions and volume, association with geolocation data, and generation
+of control signals for repair execution. The method includes dispensing a calculated
+volume of filler material using a driving unit disposed between the container and
+dispensing nozzle mounted on a mobile platform, and evaluating repair costs with
+
+15
+
+transmission of structured data including cost, geolocation, and before-and-after
+visual documentation. The method further encompasses comparison of detected
+potholes for resurfacing recommendations, traversal of the mobile platform either
+autonomously or under manual control, and identification of road surface
+irregularities for accurate boundary and dimension evaluation.
+
+20
+
+[0025]
+
+Referring to FIG. 1, a block diagram (100) of a pothole detection
+
+and repair system (102) (interchangeably referred to as system (102), hereinafter)
+is disclosed. The system (102) can be utilised for automated detection, evaluation,
+and repair of potholes present on a road surface. The system (102) includes an
+image acquisition unit (104), a processor (106), and a dispensing assembly (110).
+25
+
+The image acquisition unit (104) is configured to acquire visual data, including at
+least one of live video, recorded footage, or static images of road surface. The image
+acquisition unit (104) may include one or more cameras, optical sensors, or
+equivalent imaging devices capable of capturing high-resolution images and videos
+under varying environmental conditions, such as daylight, low light, or adverse
+
+30
+
+weather. The image acquisition unit (104) may capture static images of localised
+road segments to support high-precision evaluation of specific potholes. The
+
+7
+
+captured visual data serves as primary input for subsequent processing and analysis
+performed by the processor. The image acquisition unit (104) thus ensures reliable
+and consistent data collection for detection of surface irregularities indicative of
+potholes.
+5
+
+[0026]
+
+In an embodiment, the dispensing assembly (110) is mounted on a
+
+mobile platform (not shown), that supports the dispensing assembly (110) to
+traverse the road surface autonomously using navigation modules or may be
+manually operated, thereby providing flexibility for both large-scale and localised
+repair operations. The dispensing assembly (110) includes a container (132)
+10
+
+configured to hold filler material such as asphalt mix, polymer-based compounds,
+or other suitable road repair substances. The filler material may be in liquid, semisolid, or particulate form, depending on the application and road conditions. The
+container (132) ensures storage and supply of the filler material in a controlled
+manner.
+
+15
+
+[0027]
+
+The dispensing assembly (110) further includes a dispensing nozzle
+
+(134) in fluid communication with the container (132). The dispensing nozzle (134)
+is configured to deliver the filler material into the detected pothole with directional
+precision, thereby ensuring uniform distribution and minimising spillage onto the
+surrounding road surface. This dispensing nozzle (134) may be adapted with
+20
+
+interchangeable heads to accommodate different pothole geometries or surface
+conditions.
+[0028]
+
+In addition, the dispensing assembly (110) includes a driving unit
+
+(136) operatively disposed between the container (132) and the dispensing nozzle
+(134). The driving unit (136) is configured to regulate the release of the filler
+25
+
+material in the detected pothole, based on instructions received from the processor
+(106).
+[0029]
+
+In an embodiment, a computing device (142) may be
+
+communicatively coupled to the system (102) through a communication unit (144).
+The communication unit (144) can include, but is not limited to, wireless
+30
+
+communication technologies such as Wi-Fi, cellular (3G/4G/5G), Bluetooth, or
+dedicated short-range communication (DSRC). In one example, the communication
+
+8
+
+unit (144) may enable real-time transmission of pothole detection and repair data to
+the computing device (142), allowing authorities to monitor ongoing road
+maintenance activities. In another example, the communication unit (144) may
+support periodic synchronization, wherein data accumulated in the memory (106)
+5
+
+is transmitted in batch mode to optimize bandwidth usage. The computing device
+(142) may further aggregate information from multiple deployed systems (102) to
+generate comprehensive road condition reports across a defined geographical
+region.
+[0030]
+
+10
+
+The computing device (142) can be, for example, a server, a cloud-
+
+based platform, a central monitoring station, or a handheld device such as a tablet
+or smartphone used by road maintenance personnel. In one example, when the
+computing device (142) is implemented as a server or cloud platform, it may receive
+data from multiple systems (102) operating across different regions and consolidate
+the data for large-scale analysis of road conditions. In another example, when the
+
+15
+
+computing device (142) is implemented as a portable handheld device, it may
+provide real-time updates, alerts, or visual maps of detected potholes and completed
+repairs to on-site operators or supervisors. The computing device (142) may further
+provide an interface for generating structured reports, scheduling maintenance
+tasks, and analysing historical data to support predictive maintenance strategies.
+
+20
+
+[0031]
+
+In an embodiment, the processor (106) may be operatively coupled
+
+to the image acquisition unit (104) and the dispensing assembly (110). The
+processor (106) may be implemented as one or more microprocessors,
+microcomputers, microcontrollers, digital signal processors, central processing
+units, logic circuitries, and/or any devices that manipulate data based on operational
+25
+
+instructions. Among other capabilities, the processor (106) may be configured to
+fetch and execute computer-readable instructions stored in a memory (108). The
+memory (108) may store one or more computer-readable instructions or routines,
+which may be fetched and executed for processing the visual data, and operations
+of the dispensing assembly (110). The memory (108) may include any non-
+
+30
+
+transitory storage device, including, for example, volatile memory such as Random
+
+9
+
+Access Memory (RAM), or non-volatile memory such as an Erasable
+Programmable Read-Only Memory (EPROM), flash memory, and the like.
+[0032]
+
+In an embodiment, the processor (106) may also include an
+
+interface(s) (114). The interface(s) (114) may include a variety of interfaces, for
+5
+
+example, interfaces for data input and output devices, referred to as Input/Output
+(I/O) devices, storage devices, and the like. The interface(s) (114) may provide a
+communication pathway for one or more components of the vehicle. Examples of
+such components include, but are not limited to, processing engine(s) (116) and a
+database (118). The database (118) may be configured to store visual data acquired
+
+10
+
+by the image acquisition unit (104), detected pothole characteristics such as
+location, width, length, and depth, as well as repair-related information, including
+the volume of filler material used and cost evaluation data. In one example, the
+database (118) may further maintain historical records of potholes and repairs
+performed, thereby enabling analytics, predictive maintenance planning, and
+
+15
+
+generation of structured reports for road authorities.
+[0033]
+
+In an embodiment, the processing engine(s) (116) may be
+
+implemented as a combination of hardware and programming (for example,
+programmable instructions) to implement one or more functionalities of the
+processing engine(s) (116). In other embodiments, the processing engine(s) (116)
+20
+
+may be implemented by electronic circuitry. The database (118) may include data
+that is either stored or generated as a result of functionalities implemented by any
+of the components of the processing engine(s) (116). In an embodiment, the
+processing engine(s) (116) may include a visual data analysis module (120), a
+geolocation mapping module (122), a repair control module (124), a cost evaluation
+
+25
+
+and reporting module (126), a resurfacing recommendation module (128), and other
+module(s) (130). The other module(s) (130) may implement functionalities that
+supplement applications/functions performed by the system (102).
+[0034]
+
+In an embodiment, a visual data analysis module (120) may be
+
+configured to receive and process the acquired visual data using a pothole detection
+30
+
+model to detect one or more potholes on the road surface. The visual data analysis
+module (120) is further configured to identify irregularities in the texture, shading,
+
+10
+
+or contour of the road surface that are indicative of a pothole and to output the
+corresponding boundaries of each detected pothole. By analysing the detected
+boundaries, the visual data analysis module (120) determines dimensions and
+volume of each pothole, including evaluation of width, length, and depth
+5
+
+parameters.
+[0035]
+
+The pothole detection model implemented within the visual data
+
+analysis module may employ one or more machine learning techniques, computer
+vision algorithms, or image segmentation methods to enhance accuracy and
+reliability in varying lighting and weather conditions. The visual data analysis
+10
+
+module (120) may also normalize the acquired visual data to minimise the effects
+of noise, shadows, or camera vibrations during acquisition.
+[0036]
+
+In an exemplary embodiment, when the image acquisition unit (104)
+
+captures live video of a road segment, the visual data analysis module (120) may
+detect a dark irregular patch with distinct edges that differ from the surrounding
+15
+
+road texture. The visual data analysis module (120) identifies patch as a pothole,
+traces its perimeter to determine the boundary, and subsequently estimates its
+dimensions as approximately 40 centimeters in width, 60 centimeters in length, and
+12 centimeters in depth. Using these values, the visual data analysis module (120)
+calculates approximate volume of the pothole, which may further be used by the
+
+20
+
+dispensing control module to release a proportional amount of filler material for
+effective repair.
+[0037]
+
+In an embodiment, a geolocation mapping module (122) may be
+
+configured to associate each detected pothole with geolocation data, the geolocation
+data being provided by a global positioning receiver (112). The geolocation
+25
+
+mapping module (122) ensures that every pothole identified by the visual data
+analysis module (120) is tagged with precise geographic coordinates, thereby
+enabling accurate localization and record keeping of road surface defects.
+[0038]
+
+In addition, geolocation mapping module (122) may further refine
+
+received raw coordinates by applying error correction techniques, such as
+30
+
+differential GPS adjustments or averaging over multiple readings, to improve
+positional accuracy. This association of pothole detection with location data enables
+
+11
+
+systematic cataloging of potholes and supports repair planning on both small and
+large scales. For instance, upon detection of a pothole measuring 40 centimeters in
+width, 60 centimeters in length, and 12 centimeters in depth, the geolocation
+mapping module may tag the pothole with coordinates corresponding to latitude
+5
+
+28.6139° N and longitude 77.2090° E. This geotag is further stored along with
+dimensional and repair information in the memory (108), and may also be
+transmitted to the computing device (142) for centralized monitoring. By linking
+detection with geolocation, the system (102) ensures that municipal authorities or
+road maintenance agencies can track the exact position of each pothole, schedule
+
+10
+
+timely interventions, and prevent duplication of repair efforts. This integration of
+pothole detection and geolocation facilitates targeted repairs and enhances
+transparency, accountability, and efficiency in road maintenance operations.
+[0039]
+
+In an embodiment, repair control module (124) may be configured
+
+to generate control signals for repair execution and reporting. The repair control
+15
+
+module (124) interprets dimensional data of each pothole, including width, length,
+and depth, as determined by the visual data analysis module, and translates this
+assessment into actionable instructions for the dispensing assembly. These control
+signals are communicated to the driving unit (136) of the dispensing assembly
+(110), which in turn adjusts the dispensing flow rate and regulates the release of
+
+20
+
+filler material into the pothole. This repair control module (124) ensures that the
+calculated volume of filler material is precisely matched to the actual dimensions
+and volume of each detected pothole. By dynamically adjusting dispensing flow
+rates and volumes, the repair control module (124) minimises material wastage
+while maintaining uniformity in repair quality across varying pothole sizes.
+
+25
+
+Additionally, the repair control module (124) can generate structured reporting data
+related to the repair process, such as filler volume used, dispensing duration, and
+execution status, which may be transmitted to the computing device (142) for
+monitoring and recordkeeping.
+[0040]
+
+30
+
+In an exemplary embodiment, when it is determined that a pothole
+
+is relatively deep and wide, the repair control module (124) generates control
+signals that cause the driving unit (136) to increase the dispensing flow rate and
+
+12
+
+volume, ensuring that the pothole is filled to an adequate level. Conversely, if the
+pothole is identified as shallow and narrow, the repair control module (124)
+proportionally reduces the flow rate, dispensing only the required amount of
+material. Such automated regulation enables precise filling with minimal wastage
+5
+
+of filler material, thereby ensuring both operational efficiency and consistent repair
+quality.
+[0041]
+
+In an embodiment, cost evaluation and reporting module (126) may
+
+be configured to evaluate repair cost based on the volume of filler material used to
+repair each detected pothole. This cost evaluation and reporting module (126) may
+10
+
+further be configured to generate structured reports including details such as the
+evaluated repair cost, the geolocation data of the pothole, the determined
+dimensions and volume, and before-and-after visual data of each repaired pothole.
+The generated reports may be transmitted to the computing device (142) for storage,
+monitoring, and auditing. This enables transparent tracking of resource utilisation
+
+15
+
+and provides maintenance authorities with verifiable records of repair activities.
+[0042]
+
+In an exemplary embodiment, when a deep pothole requires a larger
+
+quantity of filler material, the module calculates a higher repair cost proportional to
+the volume used. Conversely, for a smaller shallow pothole, the module records a
+lower repair cost. The reporting function may include attaching pre-repair and post20
+
+repair images along with exact geolocation coordinates, allowing municipal
+authorities to remotely verify repair completion, assess maintenance efficiency, and
+plan budgeting for future road repair operations.
+[0043]
+
+In an embodiment, a resurfacing recommendation module (128)
+
+may be configured to compare and analyse the number, size, and distribution of
+25
+
+potholes detected within a given stretch of the road surface. The resurfacing
+recommendation module (128) may further be configured to generate a
+recommendation for resurfacing of the road surface when a threshold number or
+severity level of potholes is identified, indicating that isolated repairs may not be
+sufficient for sustainable road quality. For instance, when it is determined that more
+
+30
+
+than a predefined threshold percentage of a one-kilometer road segment contains
+medium to large potholes, a resurfacing recommendation is automatically
+
+13
+
+generated. The recommendation may include geolocation boundaries of the
+affected stretch, cumulative pothole statistics, and visual evidence of the degraded
+road surface. Such recommendations can be transmitted to the computing device
+(142) or a centralized monitoring system to assist municipal authorities in making
+5
+
+timely decisions regarding large-scale resurfacing projects.
+[0044]
+
+Referring to FIG. 2, a method (200) for detecting and repairing
+
+potholes on a road surface is disclosed. At block (202), the method (200) includes
+acquiring visual data of the road surface using the image acquisition unit (104). The
+visual data may include at least one of live video, recorded footage, or static images
+10
+
+of the road surface.
+[0045]
+
+At block (204), the acquired visual data is processed by a processor
+
+(106) executing a pothole detection model to detect one or more potholes on the
+road surface. The visual data analysis module (120) of the processor (106) may
+identify irregularities in the surface texture, generate boundaries around the
+15
+
+potholes, and determine potential regions of interest for further evaluation.
+[0046]
+
+At block (206), the processor (106) determines dimensions and
+
+volume of each detected pothole by analysing the generated boundaries. This
+evaluation may include calculating the width, length, and depth of the pothole to
+estimate its volume.
+20
+
+[0047]
+
+At block (208), the method (200) includes associating each detected
+
+pothole with geolocation data provided by a global positioning receiver (112). The
+geolocation mapping module (122) may assign a latitude-longitude pair to each
+pothole, thereby enabling accurate mapping and future tracking of road surface
+conditions.
+25
+
+[0048]
+
+At block (210), the processor (106) generates control signals for
+
+execution of repair and reporting using the repair control module (124). These
+control signals are configured to actuate a dispensing assembly (110) mounted on
+a mobile platform (not shown) for precise filler dispensing based on pothole
+dimensions.
+30
+
+[0049]
+
+At block (212), the dispensing assembly (110) operates to release a
+
+calculated volume of filler material into each detected pothole. The container (132)
+
+14
+
+holds the filler material, the driving unit (136) regulates the flow, and the dispensing
+nozzle (134) directs the material into the pothole. The mobile platform may traverse
+the road surface either autonomously or under manual control, ensuring that all
+detected potholes are systematically repaired.
+5
+
+[0050]
+
+At block (214), the processor (106) evaluates the repair cost, and this
+
+evaluation is based on the volume of filler material dispensed. The repair cost, along
+with geolocation data of the repaired pothole and before-and-after visual data, is
+transmitted to a computing device (142) for centralized record keeping and analysis.
+[0051]
+10
+
+In addition, processor (106) is further configured to compare the
+
+detected potholes within a given road segment and may generate a recommendation
+for resurfacing the road surface when a threshold number or severity of potholes is
+identified. For instance, when more than 25 potholes are detected in a 1 km stretch,
+the processor (106) may recommend resurfacing the entire segment instead of
+performing individual repairs.
+
+15
+
+[0052]
+
+Thus, the present disclosure provides the system (102) and method
+
+(200) for automated detection and repair of potholes on a road surface. The
+disclosure achieves accurate identification, cost-effective repair execution, and
+improved road surface quality with minimal human intervention.
+[0053]
+20
+
+While the foregoing describes various embodiments of the
+
+invention, other and further embodiments of the invention may be devised without
+departing from the basic scope thereof. The scope of the invention is determined by
+the claims that follow. The invention is not limited to the described embodiments,
+versions, or examples, which are included to enable those having ordinary skill in
+the art to make and use the invention when combined with information and
+
+25
+
+knowledge available to those having ordinary skill in the art.
+
+ADVANTAGES OF THE PRESENT DISCLOSURE
+[0054]
+
+The present disclosure provides a solution that enables timely
+
+identification of potholes, improving operational efficiency in road maintenance.
+
+15
+
+[0055]
+
+The present disclosure provides a system and method that allows
+
+precise measurement of pothole dimensions and volume, optimizing material usage
+and reducing waste.
+[0056]
+5
+
+The present disclosure provides a solution that supports automated
+
+or assisted repair procedures, minimising the need for manual intervention and
+reducing human effort.
+[0057]
+
+The present disclosure provides a system and method that generates
+
+reliable documentation and reporting, enhancing transparency, planning, and
+accountability in maintenance operations.
+
+16
+
+We Claim:
+
+1.
+
+A pothole detection and repair system (102), comprising:
+an image acquisition unit (104) configured to acquire visual
+
+5
+
+data comprising at least one of live video, recorded footage, or static
+images of a road surface;
+a processor (106) operatively coupled to the image
+acquisition unit (104) and a memory, wherein the memory (108)
+stores instructions that, when executed by the processor (106), cause
+
+10
+
+the processor (106) to:
+receive and process the acquired visual data using a
+pothole detection model to detect one or more potholes on
+the road surface;
+determine dimensions and volume of each detected
+
+15
+
+pothole;
+associate each detected pothole with geolocation
+data, the geolocation data being provided by a global
+positioning receiver (112); and
+generate control signals for repair execution and
+
+20
+
+reporting; and
+a dispensing assembly (110) mounted on a mobile platform,
+the dispensing assembly (110) comprising:
+a container (132) configured to hold filler material;
+a dispensing nozzle (134) in fluid communication
+
+25
+
+with the container (132); and
+a driving unit (136) disposed between the container
+(132) and the dispensing nozzle (134), the driving unit (136)
+being actuated upon receipt of the control signals generated
+by the processor (106), to release a calculated volume of the
+
+30
+
+filler material into the detected pothole based on the
+determined dimensions and volume;
+
+17
+
+wherein the processor (106) evaluates repair cost based on the
+volume of filler material used to repair each detected pothole, and
+transmits the repair cost, the geolocation data of the pothole, and
+before-and-after visual data of each pothole to a computing device.
+5
+
+2.
+
+The system (102) as claimed in claim 1, wherein the processor (106)
+is further configured to compare each detected pothole within the road
+surface and generate a recommendation for resurfacing of the road surface
+when a threshold number of the potholes are identified.
+
+3.
+10
+
+The system (102) as claimed in claim 1, wherein the mobile platform
+is configured to traverse the road surface autonomously or under manual
+control.
+
+4.
+
+The system (102) as claimed in claim 1, wherein the processor (106)
+identifies irregularities in the road surface indicative of the pothole and
+outputs boundaries of each detected pothole.
+
+15
+
+5.
+
+The system (102) as claimed in claim 4, wherein the processor (106)
+determines dimensions and volume of each detected pothole by analysing
+the boundaries of the detected pothole and evaluating width, length, and
+depth of each detected pothole.
+
+6.
+20
+
+The system (102) as claimed in claim 5, wherein the processor (106)
+is further configured to actuate the driving unit (136) to adjust the
+dispensing flow rate based on the evaluated width, length, and depth of each
+detected pothole.
+
+7.
+
+A method (200) for detecting and repairing potholes on a road
+surface, comprising:
+
+25
+
+acquiring (202), visual data of the road surface comprising
+at least one of live video, recorded footage, or static images using an
+image acquisition unit;
+processing (204), the acquired visual data using a processor
+executing a pothole detection model to detect one or more potholes
+
+30
+
+on the road surface;
+
+18
+
+determining (206), dimensions and volume of each detected
+pothole using the processor by analysing boundaries of each
+detected pothole;
+associating (208), each detected pothole with geolocation
+5
+
+data provided by a global positioning receiver;
+generating (210), control signals using the processor for
+execution of repair and reporting;
+dispensing (212), a calculated volume of filler material into
+each detected pothole using a driving unit disposed between a
+
+10
+
+container holding the filler material and a dispensing nozzle of a
+dispensing assembly mounted on a mobile platform, the driving unit
+being actuated upon receipt of the control signals; and
+evaluating (214), using the processor, repair cost based on
+the volume of filler material used, and transmitting the repair cost,
+
+15
+
+geolocation data, and before-and-after visual data of each pothole to
+a computing device.
+8.
+
+The method as claimed in claim 7, further comprising comparing
+each detected pothole within the road surface and generating, using the
+processor, a recommendation for resurfacing of the road surface when a
+
+20
+
+threshold number of potholes are identified.
+9.
+
+The method as claimed in claim 7, wherein the mobile platform
+traverses the road surface autonomously or under manual control.
+
+10.
+
+The method as claimed in claim 7, wherein the processor identifies
+irregularities in the road surface indicative of each pothole and outputs
+
+25
+
+boundaries of each detected pothole, and determines the dimensions and
+volume of each detected pothole by analysing the boundaries and evaluating
+width, length, and depth of each detected pothole.
+For Amrita Vishwa Vidyapeetham
+
+30
+
+Tarun Khurana
+Regd. Patent Agent [IN/PA-1325]
+Dated: 16th January, 2026
+19
+
+ABSTRACT
+POTHOLE DETECTION AND REPAIR SYSTEM AND METHOD
+THEREOF
+
+5
+
+The present disclosure relates to a pothole detection and repair system (102) and
+method (200). The system (102) includes an image acquisition unit (104)
+configured to acquire visual data of a road surface, including at least one of live
+video, recorded footage, or static images. A processor (106) processes acquired
+visual data to detect one or more potholes, determine dimensions and volume of
+
+10
+
+each detected pothole, and associate each pothole with geolocation data provided
+by a global positioning receiver (112). Based on determined dimensions, the
+processor (106) generates control signals to actuate a driving unit (136) of a
+dispensing assembly (110), thereby dispensing a calculated volume of filler
+material into each detected pothole. The processor (106) further evaluates repair
+
+15
+
+cost based on filler material utilised, transmits repair details with before-and-after
+visual data to a computing device (142), and generates resurfacing
+recommendations when a threshold number of potholes are identified.
+
+20
+Digitally Signed By:
+TARUN KHURANA
+Date: 16-01-2026 14:58:42
+
+
