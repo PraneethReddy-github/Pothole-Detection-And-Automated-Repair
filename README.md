@@ -174,8 +174,7 @@ Pothole-Detection-And-Automated-Repair/
 │   │   └── paper_text.txt         # Project report text
 │   └── patents/
 │       ├── patent_pub.txt         # Patent publication specifications
-│       ├── complete_spec.txt      # Specification details
-│       └── invention_disclosure.txt # Disclosure document
+│       └── complete_spec.txt      # Specification details
 ├── fast-depth/                    # Mobile-optimized FastDepth monocular estimation module
 ├── yolov12/                       # Ultralytics YOLOv12 research module repository
 ├── depth_estimator.py             # PyTorch MiDaS depth estimator wrapper class
